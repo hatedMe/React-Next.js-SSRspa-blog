@@ -4,7 +4,7 @@ import Nav from '../components/nav'
 
 import Article from '../components/article';
 
-export default class Index extends React.Component {
+export default class Index2 extends React.Component {
 
     render() {
         return (
@@ -18,10 +18,10 @@ export default class Index extends React.Component {
                     </header>
                     <div className="content article-list">
                         {
-                            [1,2,3,1,2,3,1,2,3,1,2,3].map((e,i)=>{
+                            [1,2,3,1].map((e,i)=>{
                                 return <Article key={i} />
                             })
-                        }
+                        }   
                     </div>
                 </section>
             </div>
