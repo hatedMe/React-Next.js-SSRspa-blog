@@ -4,7 +4,7 @@
 			<el-form-item label="文章标题">
 				<el-input v-model="form.title"></el-input>
 			</el-form-item>
-	
+
 			<el-form-item label="所属分类">
 				<el-select v-model="form.category" placeholder="请选择所属分类">
 					<el-option label="nodejs" value="nodejs"></el-option>
@@ -30,7 +30,6 @@
 					<mavonEditor v-model="form.value" style="height: 100%" @imgAdd="$imgAdd" @imgDel="$imgDel"></mavonEditor>
 				</div>
 			</el-form-item>
-			
 
 			<el-form-item>
 				<el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -45,7 +44,7 @@
 
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import marked from 'marked'; 
+import marked from 'marked';
 
 export default {
 	components: {
@@ -61,7 +60,7 @@ export default {
 				category: '',
 				labels: [],
 				content: '',
-				value:''
+				value: ''
 			},
 			img_file: {},
 		}
@@ -76,39 +75,40 @@ export default {
 		},
 
 		async onSubmit() {
-			
+
 			var content = this.form.content;
 			var formdata = new FormData();
 			for (var _img in this.img_file) {
 				formdata.append('image', this.img_file[_img]);
 			}
 
-			// let converter = new showdown.Converter();
-			// content = converter.makeHtml(this.form.value); // 转换md格式为html格式
-
-
-			//content = markdown.toHTML(this.form.value );
-			content = marked(this.form.value)
-
+			content = marked(this.form.value);
 			console.log(content);
 
-			// let lesult = await this.axios({
-			// 	method: 'post',
-			// 	url: '/api/api/addUserInfo',
-			// 	data: formdata
-			// });
+			//  判断是否有值，
+			if (JSON.stringify(this.img_file) !== "{}") {
 
+				let lesult = await this.axios({
+					method: 'post',
+					url: '/api/api/addUserInfo',
+					data: formdata
+				});
 
-			// console.log(lesult); ///sdfsdf
-			// var re = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi;  //匹配所有img标签;
-			// var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;  //正则匹配src地址;
-			// var reIndex = -1;
-			// content = content.replace(re,function($0,$1){
-			// 	reIndex++;
-			// 	return $0 = $0.replace( srcReg ,function(_$0){
-			// 		return $0 = `src="${lesult.data.data[reIndex].fileName}"` //'src=' + '"5.png"'
-			// 	})
-			// })
+				var re = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi;  //匹配所有img标签;
+				var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;  //正则匹配src地址;
+				var reIndex = -1;
+				content = content.replace(re, function($0, $1) {
+					reIndex++;
+					return $0 = $0.replace(srcReg, function(_$0) {
+						return $0 = `src="${lesult.data.data[reIndex].fileName}"` //'src=' + '"5.png"'
+					})
+				})
+			}
+
+			// let converter = new showdown.Converter();
+			// content = converter.makeHtml(this.form.value); // 转换md格式为html格式
+			// content = markdown.toHTML(this.form.value );
+
 
 			this.form.labels = JSON.stringify(this.form.labels);
 
@@ -124,7 +124,7 @@ export default {
 			console.log(this.form);
 		}
 	},
-	
+
 }
 </script>
 
