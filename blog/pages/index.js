@@ -1,30 +1,43 @@
-import Link from 'next/link'
-import Head from '../components/head'
-import Nav from '../components/nav'
 
+
+import 'isomorphic-fetch'
+
+import Com from './com'
 import Article from '../components/article';
 
 export default class Index extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {};
+    }
+    static async getInitialProps({query, pathname}) {
+        return {
+            id : query
+        }
+    }
+
+    async componentWillMount(){
+        // let rusllut = await fetch('api/userInfo');
+        // let res = await rusllut.json();
+        // console.log(res);
+        // this.setState({
+        //     sex : res.data.sex,
+        //     name : res.data.name,
+        //     age : res.data.age
+        // })
+    }
 
     render() {
         return (
-            <div className="main-center">
-                <Head title="Home"/>
-                <Nav/>
-                <section className="main">
-                    <header className="article-header">
-                        <h1 data-itemprop="title">文章列表</h1>
-                        <p className="text-muted">Total 1 articles</p>
-                    </header>
-                    <div className="content article-list">
-                        {
-                            [1,2,3,1,2,3,1,2,3,1,2,3].map((e,i)=>{
-                                return <Article key={i} />
-                            })
-                        }
-                    </div>
-                </section>
-            </div>
+            <Com>
+                <div className="content article-list">
+                {
+                    [1,2,3,1,2,3,1,2,3,1,2,3].map((e,i)=>{
+                        return <Article key={i} />
+                    })
+                }
+                </div>
+            </Com>
         )
     }
 }
