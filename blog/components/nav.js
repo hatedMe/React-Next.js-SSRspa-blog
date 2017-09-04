@@ -20,14 +20,14 @@ export default class Nav extends React.Component {
                             <a id="avatar" href="<%= profile.follow %>" target="_blank">
                                 <img
                                     className="thumb-xl img-circle img-rotate"
-                                    src=""
+                                    src="/static/images/avatar.png"
                                     width="200"
                                     height="200"/>
                             </a>
-                            <h2 id="name" className="hidden-xs hidden-sm">作者</h2>
+                            <h2 id="name" className="hidden-xs hidden-sm">HetaMe</h2>
                             <h3 id="title" className="hidden-xs hidden-sm hidden-md">Web Developer & Designer</h3>
                             <small id="location" className="text-muted hidden-xs hidden-sm">
-                                <i className="fa fa-map-marker"></i> Shenzhen, China
+                                <i className="fa fa-map-marker"></i> Chongqing, China
                             </small>
                         </div>
 
@@ -59,23 +59,53 @@ export default class Nav extends React.Component {
                     <nav id="main-navbar" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav main-nav">
                             <li className="menu-item menu-item-home active">
-                                <a href="">
-                                    <i className="fa fa-fw fa-dashboard icon-qq"></i>
-                                    <span className="menu-title">菜单</span>
+                                <a href="/">
+                                    <i className="iconfont icon-yibiaopan"></i>
+                                    <span className="menu-title">首页</span>
                                 </a>
                             </li>
                             <li className="menu-item menu-item-">
-                            <a href="<%- url_for(theme.menu[i]) %>">
-                                <i className="fa fa-fw fa-dashboard"></i>
-                                <span className="menu-title">菜单</span>
+                            <a href="/archives">
+                                <i className="iconfont icon-guidangxiangmu"></i>
+                                <span className="menu-title">归档</span>
                             </a>
                         </li>
                         <li className="menu-item menu-item-">
-                                <a href="<%- url_for(theme.menu[i]) %>">
-                                    <i className="fa fa-fw fa-dashboard"></i>
-                                    <span className="menu-title">菜单</span>
-                                </a>
-                            </li>
+                            <a href="/categories">
+                                <i className="iconfont icon-biaoqian"></i>
+                                <span className="menu-title">分类</span>
+                            </a>
+                        </li>
+                        <li className="menu-item menu-item-">
+                            <a href="/tags">
+                                <i className="iconfont icon-daima"></i>
+                                <span className="menu-title">标签</span>
+                            </a>
+                        </li>
+                        <li className="menu-item menu-item-">
+                            <a href="/repository">
+                                <i className="iconfont icon-flyme_icon-"></i>
+                                <span className="menu-title">项目</span>
+                            </a>
+                        </li>
+                        <li className="menu-item menu-item-">
+                            <a href="/books">
+                                <i className="iconfont icon-shuji"></i>
+                                <span className="menu-title">书单</span>
+                            </a>
+                        </li>
+                        <li className="menu-item menu-item-">
+                            <a href="">
+                                <i className="iconfont icon-wenjianjia"></i>
+                                <span className="menu-title ">友链</span>
+                            </a>
+                        </li>
+                        <li className="menu-item menu-item-">
+                            <a href="/about">
+                                <i className="iconfont icon-fenxiang"></i>
+                                <span className="menu-title">关于</span>
+                            </a>
+                        </li>
                         </ul>
                     </nav>
                     <Foot />

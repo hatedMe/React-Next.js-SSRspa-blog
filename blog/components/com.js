@@ -1,13 +1,16 @@
 import Link from 'next/link'
-import Head from '../components/head'
-import Nav from '../components/nav'
+import Head from './head'
+import Nav from './nav'
 
 
 export default class Com extends React.Component {
+    constructor(props){
+        super(props)
+    }
     render() {
         return (
             <div className="main-center">
-                <Head title="Home"/>
+                <Head title={this.props.title} />
                 <Nav/>
                 <section className="main">
                     <header className="article-header">

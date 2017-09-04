@@ -1,18 +1,19 @@
 import Link from 'next/link'
-
 import React from 'react';
 
 export default class Article extends React.Component {
     static async getInitialProps({query, pathname}) {
 
-        return {}
+        return {
+            id : query.id
+        }
 
     }
 
     render() {
+        //const { id } = this.props
         return (
-            <div>4545</div>
-
+            <div>{ this.props.id }</div>
         )
     }
 }

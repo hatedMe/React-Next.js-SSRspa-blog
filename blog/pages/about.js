@@ -5,19 +5,20 @@ import Com from '../components/com'
 import Article from '../components/article';
 import 'isomorphic-fetch';
 
-export default class Index extends React.Component {
+
+
+
+
+export default class About extends React.Component {
     constructor(props){
         super(props)
         this.state = {};
     }
 
     static async getInitialProps({query, pathname}) {
-        let rusllut = await fetch('http://localhost:4040/api/assortarticle?category=node');
-        let res = await rusllut.json();
-
+      
         return {
-            id : query,
-            list: res.data
+            
         }
     }
 
@@ -30,12 +31,7 @@ export default class Index extends React.Component {
         return (
             <Com>
                 <div className="content article-list">
-                {
-                    /*console.log(this.props.list)*/
-                    this.props.list.map((e,i)=>{
-                        return <Article key={i} {...e} />
-                    })
-                }
+                  about
                 </div>
             </Com>
         )

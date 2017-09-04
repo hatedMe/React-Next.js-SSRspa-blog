@@ -3,6 +3,9 @@ import Link from 'next/link'
 import React from 'react';
 
 export default class Article extends React.Component {
+    constructor(props){
+        super(props)
+    }
     static async getInitialProps({query, pathname}) {
 
         return {}
@@ -10,13 +13,15 @@ export default class Article extends React.Component {
     }
 
     render() {
+        const { content,articleId} = this.props
+        const basepath = '../article?id='
         return (
             <article className="article article-type-post">
                 <div className="article-header">
                     <h1>
                         <a
                             className="article-title"
-                            href="">Hexo博客常用插件及用法</a>
+                            href={ basepath + articleId }>{content}</a>
                     </h1>
                 </div>
                 <p className="article-meta">

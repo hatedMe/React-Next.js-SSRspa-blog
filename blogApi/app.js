@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 const app = new Koa();
 const router = new Router();
 
+const koaCors = require('koa-cors')
+
 const api = require('./router/api');
 const login = require('./router/login');
 
@@ -16,7 +18,7 @@ router.get('/', (ctx, next) => {
     ctx.body = '45'
 })
 
-
+app.use( koaCors() );
 
 
 router.use('/api', api.routes(), api.allowedMethods());

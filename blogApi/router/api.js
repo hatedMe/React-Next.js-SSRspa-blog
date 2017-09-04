@@ -130,6 +130,7 @@ router.get('/allcategory', async(ctx, next) => { //查看全部分类
     let reslut = await Category
         .find()
         .then(res => {
+            console.log(res);
             return res === null
                 ? false
                 : res;
@@ -147,13 +148,7 @@ router.get('/assortarticle', async(ctx, next) => { //查看分类下的所有文
         .find({category})
         .then(res => {
             console.log(res);
-            return res === null
-                ? false
-                : (() => {
-                    res.some((val) => {
-                        return val['_id']
-                    })
-                })();
+            return res.length ? res : false 
         });
     if (reslut) {
         ctx.body = JSON.parse(`{"status": "200","message":"ok","data":${JSON.stringify(reslut)}}`);
