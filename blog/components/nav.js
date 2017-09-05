@@ -6,9 +6,11 @@ import Foot from '../components/foot'
 
 export default class Nav extends React.Component {
     static async getInitialProps({query, pathname}) {
-
-        return {}
-
+        
+        return {
+            pathname,
+            id : query
+        }
     }
 
     render() {

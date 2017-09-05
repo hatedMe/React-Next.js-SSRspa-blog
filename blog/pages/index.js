@@ -12,7 +12,7 @@ export default class Index extends React.Component {
     }
 
     static async getInitialProps({query, pathname}) {
-        let rusllut = await fetch('http://localhost:4040/api/assortarticle?category=node');
+        let rusllut = await fetch('http://localhost:4040/api/startarticle');
         let res = await rusllut.json();
 
         return {
@@ -28,10 +28,10 @@ export default class Index extends React.Component {
 
     render() {
         return (
-            <Com>
+            <Com infos="首页">
                 <div className="content article-list">
                 {
-                    /*console.log(this.props.list)*/
+                    //console.log(this.props.list )
                     this.props.list.map((e,i)=>{
                         return <Article key={i} {...e} />
                     })

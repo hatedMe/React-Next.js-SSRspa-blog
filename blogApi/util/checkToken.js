@@ -15,11 +15,13 @@ module.exports = async function checkToken(ctx,next) {
             });
         })
     }
-    console.log();
-    let access_token = ctx.request.headers['access_token'] 
-        || ctx.request.body.access_token 
-        || typeof ctx.request.body.fields === 'undefined' ?  undefined : ctx.request.body.fields['access_token'];
     
+    let access_token = ctx.request.headers['access_token'] 
+        || ctx.request.body['access_token'] 
+        || (typeof ctx.request.body.fields === 'undefined' ?  'undefined' : ctx.request.body.fields['access_token']);
+    
+    console.log(ctx.request.headers['access_token'] );
+
     if( ctx.request.method === 'POST' && ( typeof access_token === 'undefined' || await isToken() !== access_token ) ) {
         return ctx.body = JSON.parse(`{"status": "400120","message":"token is error"}`);
     }else{

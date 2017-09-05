@@ -82,8 +82,8 @@ export default {
 				formdata.append('image', this.img_file[_img]);
 			}
 
-			content = marked(this.form.value);
-			console.log(content);
+			this.form.content = marked(this.form.value);
+			console.log(this.form.content);
 
 			//  判断是否有值，
 			if (JSON.stringify(this.img_file) !== "{}") {
@@ -97,7 +97,7 @@ export default {
 				var re = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi;  //匹配所有img标签;
 				var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;  //正则匹配src地址;
 				var reIndex = -1;
-				content = content.replace(re, function($0, $1) {
+				this.form.content = this.form.content.replace(re, function($0, $1) {
 					reIndex++;
 					return $0 = $0.replace(srcReg, function(_$0) {
 						return $0 = `src="${lesult.data.data[reIndex].fileName}"` //'src=' + '"5.png"'
@@ -112,16 +112,16 @@ export default {
 
 			this.form.labels = JSON.stringify(this.form.labels);
 
-			// await this.axios.post('/api/api/savearticle', this.form).then(res => {
-			// 	if (res.data.status == 200) {
-			// 		this.$message({
-			// 			message: '提交数据成功！',
-			// 			type: 'success'
-			// 		});
-			// 	}
-			// })
+			await this.axios.post('/api/api/savearticle', this.form).then(res => {
+				if (res.data.status == 200) {
+					this.$message({
+						message: '提交数据成功！',
+						type: 'success'
+					});
+				}
+			})
 
-			console.log(this.form);
+			console.log(typeof this.form.labels);
 		}
 	},
 

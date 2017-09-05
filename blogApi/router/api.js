@@ -25,7 +25,7 @@ const checkToken = require('../util/checkToken');
  */
 
 //checkToken
-router.use('*', koaBody,checkToken)
+router.use('*', koaBody, checkToken)
 
 router.post('/item', async(ctx, next) => {
     let {name, password, access_token} = ctx.request.body;
@@ -49,8 +49,6 @@ router.post('/savearticle', async(ctx, next) => { //存储文章
         labels,
         category
     } = ctx.request.body;
-    console.log(alias)
-    console.log(ctx.request.body);
     await new Promise((resolve, reject) => {
         let article = new Article({
             alias,
@@ -85,6 +83,20 @@ router.get('/article', async(ctx, next) => { //根据文章id查询文章内容
     }
 })
 
+
+router.get('/startarticle', async (ctx,next)=>{ // 倒序查询最近的10条文章用于放置首页
+    let reslut = await Article.find({}).sort({ createTime : -1 }).limit(10).then(res=>{
+        return res.map((e,i)=>{
+            e.content = e.summary = undefined
+            return e;
+        })
+    });
+    
+    ctx.body = JSON.parse(`{"status": "200","message":"ok","data":${JSON.stringify(reslut)}}`);
+})            
+
+
+
 router.post('/savecategory', async(ctx, next) => { //添加分类
     let {cateName, alias, img, link} = ctx.request.body;
     await new Promise((resolve, reject) => {
@@ -98,18 +110,20 @@ router.post('/savecategory', async(ctx, next) => { //添加分类
     });
 });
 
-router.post('/addUserInfo', upload.array('image'), async (ctx, next) => {
-
+router.post('/addUserInfo', upload.array('image'), async(ctx, next) => {
     const arrayList = ctx.req.files;
-    
     var usrreq = [];
-
-    const saveImage = e =>{
-        var fileFormat = e.originalname.split(".");
-        var imgName = Date.now() + Math.random().toString(36).substr(2, 1) + '.' + fileFormat[fileFormat.length-1];
-        var filepath = path.join(__dirname ,"../public/uploads/" +imgName );
-        return new Promise((resolve, reject)=>{
-            fs.rename(e.path,filepath,()=>{
+    const saveImage = e => {
+        var fileFormat = e
+            .originalname
+            .split(".");
+        var imgName = Date.now() + Math
+            .random()
+            .toString(36)
+            .substr(2, 1) + '.' + fileFormat[fileFormat.length - 1];
+        var filepath = path.join(__dirname, "../public/uploads/" + imgName);
+        return new Promise((resolve, reject) => {
+            fs.rename(e.path, filepath, () => {
                 let ctxBody = {};
                 ctxBody.fileName = imgName;
                 ctxBody.mimetype = e.mimetype;
@@ -119,11 +133,15 @@ router.post('/addUserInfo', upload.array('image'), async (ctx, next) => {
         });
     };
 
-    for( var i=0; i<arrayList.length; i++){
+    for (var i = 0; i < arrayList.length; i++) {
         let lesult = await saveImage(arrayList[i]);
-        usrreq.push(lesult )
+        usrreq.push(lesult)
     }
-    ctx.body = {"status": "200", "message":"ok","data":usrreq}
+    ctx.body = {
+        "status": "200",
+        "message": "ok",
+        "data": usrreq
+    }
 });
 
 router.get('/allcategory', async(ctx, next) => { //查看全部分类
@@ -148,7 +166,9 @@ router.get('/assortarticle', async(ctx, next) => { //查看分类下的所有文
         .find({category})
         .then(res => {
             console.log(res);
-            return res.length ? res : false 
+            return res.length
+                ? res
+                : false
         });
     if (reslut) {
         ctx.body = JSON.parse(`{"status": "200","message":"ok","data":${JSON.stringify(reslut)}}`);

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Head from './head'
 import Nav from './nav'
-
+import Title from '../components/title'
 
 export default class Com extends React.Component {
     constructor(props){
@@ -13,10 +13,7 @@ export default class Com extends React.Component {
                 <Head title={this.props.title} />
                 <Nav/>
                 <section className="main">
-                    <header className="article-header">
-                        <h1 data-itemprop="title">文章列表</h1>
-                        <p className="text-muted">Total 1 articles</p>
-                    </header>
+                    <Title infos={this.props.infos} />
                     { this.props.children }
                 </section>
             </div>
