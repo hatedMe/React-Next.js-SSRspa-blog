@@ -14,7 +14,7 @@ const articleSchema = new mongoose.Schema({
     //分类Id
     category: { type: String , default: 'other' },
     //文章id
-    articleId : { type :String ,default : Math.random().toString(36).substr(2, 8) + (+new Date()).toString().substr(9, 32)  },
+    articleId : { type :String  },
     //标签
     labels: { type: [] },
     //外链Url
@@ -26,9 +26,9 @@ const articleSchema = new mongoose.Schema({
     //是否有效
     isActive: { type: Boolean },
     //创建时间
-    createTime: { type: Date, default: +new Date() },
+    createTime: { type: Date},
     //修改时间
-    modifyTime: { type: Date, default: +new Date() }
+    modifyTime: { type: Date}
 });
 
 let Article = mongoose.model('article', articleSchema);

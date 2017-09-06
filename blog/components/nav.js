@@ -62,7 +62,7 @@ export default class Nav extends React.Component {
                         <ul className="nav navbar-nav main-nav">
                             <li className="menu-item menu-item-home active">
                                 <a href="/">
-                                    <i className="iconfont icon-yibiaopan"></i>
+                                    <i className="iconfont icon-zhuye1"></i>
                                     <span className="menu-title">首页</span>
                                 </a>
                             </li>
@@ -80,13 +80,13 @@ export default class Nav extends React.Component {
                         </li>
                         <li className="menu-item menu-item-">
                             <a href="/tags">
-                                <i className="iconfont icon-daima"></i>
+                                <i className="iconfont icon-library-2"></i>
                                 <span className="menu-title">标签</span>
                             </a>
                         </li>
                         <li className="menu-item menu-item-">
                             <a href="/repository">
-                                <i className="iconfont icon-flyme_icon-"></i>
+                                <i className="iconfont icon-lianjie"></i>
                                 <span className="menu-title">项目</span>
                             </a>
                         </li>

@@ -25,6 +25,8 @@ const Head = (props) => (
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/github.css" />
+    <script src="/static/js/highlight.js"></script>
   </NextHead>
 )
 

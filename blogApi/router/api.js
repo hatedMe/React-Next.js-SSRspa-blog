@@ -50,10 +50,14 @@ router.post('/savearticle', async(ctx, next) => { //存储文章
         category
     } = ctx.request.body;
     await new Promise((resolve, reject) => {
+        let iNow = Date.now();
         let article = new Article({
             alias,
             content,
             category,
+            articleId : Math.random().toString(36).substr(2, 8) + iNow.toString().substr(9, 32),
+            createTime: iNow,
+            modifyTime : iNow,
             title,
             summary,
             labels: JSON.parse(labels)
@@ -87,7 +91,7 @@ router.get('/article', async(ctx, next) => { //根据文章id查询文章内容
 router.get('/startarticle', async (ctx,next)=>{ // 倒序查询最近的10条文章用于放置首页
     let reslut = await Article.find({}).sort({ createTime : -1 }).limit(10).then(res=>{
         return res.map((e,i)=>{
-            e.content = e.summary = undefined
+            e.content = undefined
             return e;
         })
     });

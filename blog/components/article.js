@@ -13,7 +13,8 @@ export default class Article extends React.Component {
     }
 
     render() {
-        const { title,articleId ,createTime ,category} = this.props
+        let { title,articleId ,createTime ,category,summary} = this.props
+        createTime = new Date(createTime).toLocaleString()
         console.log(this.props);
         const basepath = '../article?id='
         return (
@@ -32,8 +33,8 @@ export default class Article extends React.Component {
                         <a
                             href={ basepath + articleId }
                             className="article-date">
-                            <time>{createTime}</time>
-                        </a>
+                            
+                        </a><time>{createTime}</time>
                     </span>
                     {/*<span className="article-tag">
                         <i className="fa fa-tag"></i>
@@ -46,9 +47,9 @@ export default class Article extends React.Component {
                      <span className="post-wordcount hidden-xs">字数统计: 915(字)</span>
         // <span className="post-readcount hidden-xs">阅读时长: 4(分)</span> */}
                 </p>
-                <p>希桅是一个乐观主义差不多派，他的乐观也是差不多的。这个时候，他正在车上，去往一场面试。在车上他胡乱的想着一些不着边际的事情，完全没有为接下来的面试考虑。希桅虽然性格优柔寡断，但他有船到桥头自然直，以及抱佛脚不够优雅两个护盾驱使他表现的有那么点从容。</p>
+                <p className="article-summary">{ summary }</p>
 
-                <a className="btn">阅读全文</a>
+                <p><a className="btn">阅读全文</a></p>
 
             </article>
 
