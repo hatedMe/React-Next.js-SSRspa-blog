@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react';
 import Com from '../components/com'
+import Highlight from 'react-highlight'
 
 export default class Article extends React.Component {
     static async getInitialProps({query, pathname}) {
@@ -19,8 +20,12 @@ export default class Article extends React.Component {
         return (
             <Com infos="文章详情" title={ data.title }>
                 <div className="content">
-                    <div className="markdown-body" dangerouslySetInnerHTML={{__html :data.content }}>
-                    </div>
+                    {/*<div className="markdown-body" dangerouslySetInnerHTML={{__html :data.content }}>
+        </div> */}
+
+                    <Highlight className='language-name-of-snippet markdown-body' innerHTML={true}>
+                        { data.content }
+                    </Highlight>
                 </div>
             </Com>
         )

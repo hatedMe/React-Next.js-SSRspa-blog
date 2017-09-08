@@ -8805,7 +8805,7 @@ pre code {
   margin-left: 0;
 }
 
-.markdown-body code {
+/* .markdown-body code {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
 }
@@ -8814,7 +8814,7 @@ pre code {
   margin-top: 0;
   margin-bottom: 0;
   font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-}
+} */
 
 .markdown-body .octicon {
   vertical-align: text-bottom;
@@ -9102,7 +9102,7 @@ pre code {
   margin-bottom: 12px;
 }
 
-.markdown-body .highlight pre {
+/* .markdown-body .highlight pre {
   margin-bottom: 0;
   word-break: normal;
 }
@@ -9132,7 +9132,7 @@ pre code {
 .markdown-body pre code::before,
 .markdown-body pre code::after {
   content: normal;
-}
+} */
 
 .markdown-body .full-commit .btn-outline:not(:disabled):hover {
   color: #005cc5;

@@ -15,7 +15,7 @@ export default class Article extends React.Component {
     render() {
         let { title,articleId ,createTime ,category,summary} = this.props
         createTime = new Date(createTime).toLocaleString()
-        console.log(this.props);
+        
         const basepath = '../article?id='
         return (
             <article className="article article-type-post">
@@ -49,7 +49,7 @@ export default class Article extends React.Component {
                 </p>
                 <p className="article-summary">{ summary }</p>
 
-                <p><a className="btn">阅读全文</a></p>
+                <p><a className="btn" href={ basepath + articleId }>阅读全文</a></p>
 
             </article>
 
