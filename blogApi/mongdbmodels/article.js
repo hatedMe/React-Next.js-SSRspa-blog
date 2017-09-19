@@ -29,7 +29,7 @@ const articleSchema = new mongoose.Schema({
     createTime: { type: Date},
     //修改时间
     modifyTime: { type: Date}
-});
+},{ versionKey: false });
 
 let Article = mongoose.model('article', articleSchema);
 

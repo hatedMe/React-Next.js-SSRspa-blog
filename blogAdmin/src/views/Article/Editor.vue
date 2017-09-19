@@ -7,8 +7,7 @@
 
 			<el-form-item label="所属分类">
 				<el-select v-model="form.category" placeholder="请选择所属分类">
-					<el-option label="nodejs" value="nodejs"></el-option>
-					<el-option label="html" value="html"></el-option>
+					<el-option v-for='(item,index) in option' :label="item.cateName" key="index" :value="item.cateName"></el-option>
 				</el-select>
 			</el-form-item>
 
@@ -63,7 +62,20 @@ export default {
 				value: ''
 			},
 			img_file: {},
+			option:[],
 		}
+	},
+	async beforeMount () {
+		let id = this.$route.query.id;
+		if( id ){
+			// await this.axios.get('/api/api/allcategory').then(res =>{
+				console.log(id);
+			// })
+		}
+
+		// await this.axios.get('/api/api/allcategory').then(res => {
+		// 	this.option = res.data.data
+		// })
 	},
 	methods: {
 
@@ -121,7 +133,7 @@ export default {
 				}
 			})
 
-			console.log(typeof this.form.labels);
+			console.log(this.form);
 		}
 	},
 

@@ -46,6 +46,10 @@ const router = new Router({
             path: 'editor',
             name: '文章编辑',
             component: Editor
+        },{
+            path: 'revisearticl',
+            name: '文章修改',
+            component: Editor
         }]
     }]
 })

@@ -6,7 +6,7 @@ let user = new mongoose.Schema({
   displayName: String,
   password: String,
   email: String
-})
+},{ versionKey: false })
 
 
 
