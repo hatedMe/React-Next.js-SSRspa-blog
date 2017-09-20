@@ -100,7 +100,7 @@ router.post('/getrevisearticle',async (ctx,next)=>{
     });
     const articleContont = new Promise((resolve, reject) => {
         Article.findOne({ articleId:id }).then(response=>{
-            response.content = undefined;
+            //response.content = undefined;
             resolve( response === null ? false : response );
         })
     });
@@ -118,8 +118,27 @@ router.post('/getrevisearticle',async (ctx,next)=>{
 })
 
 
-router.post('/revisearticle',async (ctx,next)=>{
-    let {alias,content,title,summary,labels,category, value} = ctx.request.body;
+router.post('/revisearticle',async (ctx,next)=>{  // 修改文章
+    let {id, alias,content,title,summary,labels,category, value} = ctx.request.body;
+    let iNow = Date.now();
+    const updateMd = new Promise((resolve, reject) => {
+        let reslut = Articlemd.update({articleId:id},{$set:{
+            value,
+        }})
+        resolve( reslut );
+    });
+    const updateArticle = new Promise((resolve, reject) => {
+        let reslut =  Article.update({articleId:id},{$set:{
+            content,title,alias,summary,labels,category
+        }});
+        resolve( reslut )
+    });
+    
+    await Promise.all([updateMd,updateArticle]).then(response=>{
+        ctx.body = JSON.parse(`{"status": "200", "message": "ok"}`);
+    }).catch(err=>{
+        ctx.body = JSON.parse('{"status": "400500", "message":"服务器未知错误"}');
+    })
     
 })
 

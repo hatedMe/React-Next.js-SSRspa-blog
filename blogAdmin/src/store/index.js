@@ -14,7 +14,8 @@ Vue.use(Vuex);
 const state = {
     token: '',
     user: {},
-    title: ''
+    title: '',
+    isRevise : false
 }
 
 

@@ -17,10 +17,12 @@
 
 			<el-form-item label="文章标签">
 				<el-checkbox-group v-model="form.labels">
-					<el-checkbox label="name1" name="labels"></el-checkbox>
+					<!-- <el-checkbox label="name1" name="labels"></el-checkbox>
 					<el-checkbox label="name2" name="labels"></el-checkbox>
 					<el-checkbox label="name3" name="labels"></el-checkbox>
-					<el-checkbox label="name4" name="labels"></el-checkbox>
+					<el-checkbox label="name4" name="labels"></el-checkbox> -->
+					<el-checkbox v-for="item in form.labels" :label="item" :key="item">{{item}}</el-checkbox>
+					<!-- <el-checkbox v-for='(item,index) in form.labels' key='index' :label="item" name="labels">{{item}}</el-checkbox> -->
 				</el-checkbox-group>
 			</el-form-item>
 
@@ -31,7 +33,7 @@
 			</el-form-item>
 
 			<el-form-item>
-				<el-button type="primary" @click="onSubmit">立即创建</el-button>
+				<el-button type="primary" @click="onSubmit">{{ isRevise ? '马上修改' : '立即创建' }}</el-button>
 				<el-button>保存草稿</el-button>
 				<el-button>取消</el-button>
 			</el-form-item>
@@ -41,6 +43,7 @@
 
 <script>
 
+import { mapActions, mapGetters } from 'vuex';
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import marked from 'marked';
@@ -50,6 +53,9 @@ export default {
 		mavonEditor,
 	},
 	name: 'editor',
+	computed: {
+		...mapGetters(['isRevise']),
+	},
 	data() {
 		return {
 			labelPosition: 'top',
@@ -59,7 +65,8 @@ export default {
 				category: '',
 				labels: [],
 				content: '',
-				value: ''
+				value: '',
+				id : ''
 			},
 			img_file: {},
 			option:[],
@@ -67,18 +74,23 @@ export default {
 	},
 	async beforeMount () {
 		let id = this.$route.query.id;
-		if( id ){
-			// await this.axios.get('/api/api/allcategory').then(res =>{
-				console.log(id);
-			// })
+		if( id && this.$route.path.match(/[a-zA-Z-:/]+\/([a-zA-Z]+)\??/)[1] === 'revisearticle' ){
+			let reslut = await this.axios.post('/api/api/getrevisearticle',{id}).then(res => res.data );
+			console.log(JSON.parse( reslut.data.labels ));
+			for( var attr in this.form){
+				if( this.form[attr] === 'labels' ){
+					this.form[attr] = JSON.parse( reslut.data[attr] )
+				}
+				this.form[attr] = reslut.data[attr];
+			}
+			this.form.id = id ;
+			this.$store.commit('reviseArticle',true);
+		}else{
+			this.$router.push('/')
 		}
 
-		// await this.axios.get('/api/api/allcategory').then(res => {
-		// 	this.option = res.data.data
-		// })
 	},
 	methods: {
-
 		$imgAdd(pos, $file) {
 			this.img_file[pos] = $file;
 		},
@@ -106,6 +118,8 @@ export default {
 					data: formdata
 				});
 
+				console.log(lesult);
+
 				var re = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi;  //匹配所有img标签;
 				var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;  //正则匹配src地址;
 				var reIndex = -1;
@@ -124,14 +138,27 @@ export default {
 
 			this.form.labels = JSON.stringify(this.form.labels);
 
-			await this.axios.post('/api/api/savearticle', this.form).then(res => {
-				if (res.data.status == 200) {
-					this.$message({
-						message: '提交数据成功！',
-						type: 'success'
-					});
-				}
-			})
+			if( this.$store.state.isRevise ){
+				await this.axios.post('/api/api/revisearticle', this.form).then(res => {
+					if (res.data.status == 200) {
+						this.$message({
+							message: '提交数据成功！',
+							type: 'success'
+						});
+					}
+				})
+			}else{
+				await this.axios.post('/api/api/savearticle', this.form).then(res => {
+					if (res.data.status == 200) {
+						this.$message({
+							message: '提交数据成功！',
+							type: 'success'
+						});
+					}
+				})
+			}
+
+			
 
 			console.log(this.form);
 		}
