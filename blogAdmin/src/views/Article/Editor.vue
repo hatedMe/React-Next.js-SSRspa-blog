@@ -15,16 +15,7 @@
 				<el-input v-model="form.summary"></el-input>
 			</el-form-item>
 
-			<el-form-item label="文章标签">
-				<el-checkbox-group v-model="form.labels">
-					<!-- <el-checkbox label="name1" name="labels"></el-checkbox>
-					<el-checkbox label="name2" name="labels"></el-checkbox>
-					<el-checkbox label="name3" name="labels"></el-checkbox>
-					<el-checkbox label="name4" name="labels"></el-checkbox> -->
-					<el-checkbox v-for="item in form.labels" :label="item" :key="item">{{item}}</el-checkbox>
-					<!-- <el-checkbox v-for='(item,index) in form.labels' key='index' :label="item" name="labels">{{item}}</el-checkbox> -->
-				</el-checkbox-group>
-			</el-form-item>
+			
 
 			<el-form-item label="文章内容">
 				<div style="height:600px;">
@@ -63,7 +54,7 @@ export default {
 				title: '',
 				summary: '',
 				category: '',
-				labels: [],
+				//labels: [],
 				content: '',
 				value: '',
 				id : ''
@@ -76,17 +67,20 @@ export default {
 		let id = this.$route.query.id;
 		if( id && this.$route.path.match(/[a-zA-Z-:/]+\/([a-zA-Z]+)\??/)[1] === 'revisearticle' ){
 			let reslut = await this.axios.post('/api/api/getrevisearticle',{id}).then(res => res.data );
-			console.log(JSON.parse( reslut.data.labels ));
+			console.log(reslut);
+			//console.log(JSON.parse( reslut.data.labels ));
 			for( var attr in this.form){
-				if( this.form[attr] === 'labels' ){
-					this.form[attr] = JSON.parse( reslut.data[attr] )
-				}
+				//console.log(this.form[attr]);
+				//if( this.form[attr] === 'labels' ){
+					//this.form[attr] = JSON.parse( reslut.data[attr] )
+					//return;
+				//}
 				this.form[attr] = reslut.data[attr];
 			}
 			this.form.id = id ;
 			this.$store.commit('reviseArticle',true);
 		}else{
-			this.$router.push('/')
+			//this.$router.push('/')
 		}
 
 	},
@@ -106,29 +100,44 @@ export default {
 				formdata.append('image', this.img_file[_img]);
 			}
 
-			this.form.content = marked(this.form.value);
-			console.log(this.form.content);
+			//this.form.content = marked(this.form.value);
+			//console.log(this.form.content);
 
 			//  判断是否有值，
 			if (JSON.stringify(this.img_file) !== "{}") {
 
+				 
+
+				console.log(this.form.value);
+				//formdata.append('access_token', this.$store.state.token )
 				let lesult = await this.axios({
 					method: 'post',
+					headers: {'access-token': 'tokkenasdasd'},
 					url: '/api/api/addUserInfo',
 					data: formdata
 				});
 
 				console.log(lesult);
-
-				var re = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi;  //匹配所有img标签;
-				var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;  //正则匹配src地址;
 				var reIndex = -1;
-				this.form.content = this.form.content.replace(re, function($0, $1) {
+				this.form.value = this.form.value.replace(/!\[[^!]+\]\([^\)]+\)/g,function(str){
 					reIndex++;
-					return $0 = $0.replace(srcReg, function(_$0) {
-						return $0 = `src="${lesult.data.data[reIndex].fileName}"` //'src=' + '"5.png"'
+					console.log(reIndex);
+					return str.replace(/\([\W\w]+\)/g,function(){
+						console.log(reIndex);
+						return `(http://pic.djui.cn/uploads/${lesult.data.data[reIndex].fileName})`
 					})
 				})
+				
+
+				// var re = /<img [^>]*src=['"]([^'"]+)[^>]*>/gi;  //匹配所有img标签;
+				// var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;  //正则匹配src地址;
+				
+				// this.form.content = this.form.content.replace(re, function($0, $1) {
+					
+				// 	return $0 = $0.replace(srcReg, function(_$0) {
+				// 		return $0 = `src="${lesult.data.data[reIndex].fileName}"` //'src=' + '"5.png"'
+				// 	})
+				// })
 			}
 
 			// let converter = new showdown.Converter();
@@ -138,25 +147,25 @@ export default {
 
 			this.form.labels = JSON.stringify(this.form.labels);
 
-			if( this.$store.state.isRevise ){
-				await this.axios.post('/api/api/revisearticle', this.form).then(res => {
-					if (res.data.status == 200) {
-						this.$message({
-							message: '提交数据成功！',
-							type: 'success'
-						});
-					}
-				})
-			}else{
-				await this.axios.post('/api/api/savearticle', this.form).then(res => {
-					if (res.data.status == 200) {
-						this.$message({
-							message: '提交数据成功！',
-							type: 'success'
-						});
-					}
-				})
-			}
+			// if( this.$store.state.isRevise ){
+			// 	await this.axios.post('/api/api/revisearticle', this.form).then(res => {
+			// 		if (res.data.status == 200) {
+			// 			this.$message({
+			// 				message: '提交数据成功！',
+			// 				type: 'success'
+			// 			});
+			// 		}
+			// 	})
+			// }else{
+			// 	await this.axios.post('/api/api/savearticle', this.form).then(res => {
+			// 		if (res.data.status == 200) {
+			// 			this.$message({
+			// 				message: '提交数据成功！',
+			// 				type: 'success'
+			// 			});
+			// 		}
+			// 	})
+			// }
 
 			
 
