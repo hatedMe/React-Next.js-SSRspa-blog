@@ -22,7 +22,9 @@ module.exports = async function checkToken(ctx,next) {
 
 
     if( ctx.request.method === 'POST' && ( typeof accessToken === 'undefined' || await isToken() !== accessToken ) ) {
-        return ctx.body = JSON.parse(`{"status": "400120","message":"token is error"}`);
+        //return ctx.body = JSON.parse(`{"status": "400120","message":"token is error"}`);
+        ctx.response.state = 417
+        return ctx.throw(417,'token is error')
     }else{
         return next();
     }

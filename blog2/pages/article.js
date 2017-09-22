@@ -20,7 +20,7 @@ export default class Article extends React.Component {
         let iNow = data.createTime
         iNow = new Date(iNow).toLocaleString()
         return (
-            <Com infos="文章详情" title={ data.title }>
+            <Com infos="文章详情" title={ data.title } description={data.title}>
                 <div className="content">
                    {/* {<div className="markdown-body" dangerouslySetInnerHTML={{__html :data.content }}>
                  </div> }*/}

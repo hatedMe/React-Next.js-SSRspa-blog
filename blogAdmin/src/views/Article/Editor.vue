@@ -54,7 +54,7 @@ export default {
 				title: '',
 				summary: '',
 				category: '',
-				//labels: [],
+				labels: ['react','jsx'],
 				content: '',
 				value: '',
 				id : ''
@@ -80,9 +80,14 @@ export default {
 			this.form.id = id ;
 			this.$store.commit('reviseArticle',true);
 		}else{
-			//this.$router.push('/')
+			
 		}
 
+	},
+	async mounted () {
+		this.axios.get('/api/api/allcategory').then(res => {
+			this.option = res.data.data
+		});
 	},
 	methods: {
 		$imgAdd(pos, $file) {
@@ -100,7 +105,7 @@ export default {
 				formdata.append('image', this.img_file[_img]);
 			}
 
-			//this.form.content = marked(this.form.value);
+			this.form.content = marked(this.form.value);
 			//console.log(this.form.content);
 
 			//  判断是否有值，
@@ -112,8 +117,7 @@ export default {
 				//formdata.append('access_token', this.$store.state.token )
 				let lesult = await this.axios({
 					method: 'post',
-					headers: {'access-token': 'tokkenasdasd'},
-					url: '/api/api/addUserInfo',
+					url: 'http://api.djui.cn/api/addUserInfo',
 					data: formdata
 				});
 
@@ -147,25 +151,25 @@ export default {
 
 			this.form.labels = JSON.stringify(this.form.labels);
 
-			// if( this.$store.state.isRevise ){
-			// 	await this.axios.post('/api/api/revisearticle', this.form).then(res => {
-			// 		if (res.data.status == 200) {
-			// 			this.$message({
-			// 				message: '提交数据成功！',
-			// 				type: 'success'
-			// 			});
-			// 		}
-			// 	})
-			// }else{
-			// 	await this.axios.post('/api/api/savearticle', this.form).then(res => {
-			// 		if (res.data.status == 200) {
-			// 			this.$message({
-			// 				message: '提交数据成功！',
-			// 				type: 'success'
-			// 			});
-			// 		}
-			// 	})
-			// }
+			if( this.$store.state.isRevise ){
+				await this.axios.post('/api/api/revisearticle', this.form).then(res => {
+					if (res.data.status == 200) {
+						this.$message({
+							message: '提交数据成功！',
+							type: 'success'
+						});
+					}
+				})
+			}else{
+				await this.axios.post('/api/api/savearticle', this.form).then(res => {
+					if (res.data.status == 200) {
+						this.$message({
+							message: '提交数据成功！',
+							type: 'success'
+						});
+					}
+				})
+			}
 
 			
 

@@ -8,9 +8,10 @@ export default class Com extends React.Component {
         super(props)
     }
     render() {
+        const {title , description} = this.props
         return (
             <div className="main-center">
-                <Head title={this.props.title} />
+                <Head title={title} description={description} />
                 <Nav/>
                 <section className="main">
                     <Title infos={this.props.infos} />

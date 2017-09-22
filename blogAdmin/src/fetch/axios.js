@@ -7,7 +7,7 @@ axios.interceptors.request.use(
     config => {
         if (store.state.token && config.method === 'post') {
             config.headers['access-token'] = `${ store.state.token }`;
-            config.data['access-token'] = `${ store.state.token }`;
+            //config.data['access-token'] = `${ store.state.token }`;
         }
         return config;
     },
@@ -24,13 +24,14 @@ axios.interceptors.response.use(
     error => {
         if (error.response) {
             switch (error.response.status) {
-                case 401:
+                case 417:
                     // 401 清除token信息并跳转到登录页面
                     //store.commit(types.LOGOUT);
-                    router.replace({
-                        path: 'login',
-                        query: { redirect: router.currentRoute.fullPath }
-                    })
+                    console.log(router);
+                    // router.replace({
+                    //     path: '/login',
+                    //     query: { redirect: router.currentRoute.fullPath }
+                    // })
             }
         }
         return Promise.reject(error.response.data)

@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 
 /**
  * global variables and mixins
@@ -715,6 +715,7 @@ abbr[data-original-title] {
 blockquote {
   padding: 10px 15px;
   margin: 0 0 20px;
+  border: 1px dotted #eeeeee;
   border-left: 3px solid #eeeeee;
   background-color: #fbfbfb;
 }
@@ -5202,8 +5203,9 @@ pre .js .function {
 
 pre,
 .highlight {
+  background: #fafafa;
   margin: 10px 0;
-  padding: 15px 0;
+  padding: 15px 10px;
   overflow: auto;
   font-size: 13px;
   color: #4d4d4c;
@@ -8900,6 +8902,7 @@ pre code {
 }
 
 .markdown-body blockquote {
+  padding: 0 1em;
   color: #6a737d;
   border-left: 0.25em solid #dfe2e5;
 }
@@ -9075,8 +9078,8 @@ pre code {
   border-radius: 3px;
 }
 
-.markdown-body p>code::before,
-.markdown-body p>code::after {
+.markdown-body code::before,
+.markdown-body code::after {
   letter-spacing: -0.2em;
   content: "\00a0";
 }
@@ -9099,6 +9102,37 @@ pre code {
   margin-bottom: 12px;
 }
 
+/* .markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code::before,
+.markdown-body pre code::after {
+  content: normal;
+} */
 
 .markdown-body .full-commit .btn-outline:not(:disabled):hover {
   color: #005cc5;

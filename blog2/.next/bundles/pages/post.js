@@ -1,6 +1,0 @@
-
-          window.__NEXT_REGISTER_PAGE('/post', function() {
-            var comp = module.exports=webpackJsonp([11],{399:function(e,t,n){e.exports=n(400)},400:function(e,t,n){"use strict";function u(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var a=n(15),r=u(a),l=n(17),o=u(l),i=n(6),d=u(i),f=n(2),s=u(f),c=n(3),p=u(c),h=n(7),m=u(h),v=n(8),_=u(v),y=n(19),b=(u(y),n(48)),k=u(b),w=n(49),x=(u(w),n(1)),E=u(x),g=function(e){function t(){return(0,s.default)(this,t),(0,m.default)(this,(t.__proto__||(0,d.default)(t)).apply(this,arguments))}return(0,_.default)(t,e),(0,p.default)(t,[{key:"render",value:function(){return E.default.createElement("div",{className:"main"},E.default.createElement(k.default,{title:"about"}),E.default.createElement("div",{className:"hello"},console.log(this.props.id),this.props.id))}}],[{key:"getInitialProps",value:function(){function e(e){return t.apply(this,arguments)}var t=(0,o.default)(r.default.mark(function e(t){var n=t.query,u=t.pathname;return r.default.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.abrupt("return",{id:n.id,pathname:u});case 1:case"end":return e.stop()}},e,this)}));return e}()}]),t}(E.default.Component);t.default=g}},[399]);
-            return { page: comp.default }
-          })
-        
