@@ -128,8 +128,9 @@ router.post('/revisearticle',async (ctx,next)=>{  // 修改文章
         resolve( reslut );
     });
     const updateArticle = new Promise((resolve, reject) => {
+        let iNow = Date.now()
         let reslut =  Article.update({articleId:id},{$set:{
-            content,title,alias,summary,labels,category
+            content,title,alias,summary,labels,category,modifyTime:iNow
         }});
         resolve( reslut )
     });
@@ -139,12 +140,27 @@ router.post('/revisearticle',async (ctx,next)=>{  // 修改文章
     }).catch(err=>{
         ctx.body = JSON.parse('{"status": "400500", "message":"服务器未知错误"}');
     })
-    
 })
 
 
 
+router.get('/getAllArticle', async (ctx,next)=>{  // 倒序查询文章
+    let { pageSize, pageNum } = ctx.request.query;
+    !pageNum ? pageNum = 10 : pageNum = Number(pageNum); //条数
+    !pageSize ? pageSize = 1 : pageSize = Number(pageSize); // 页数
+    let skip = (pageSize - 1) * pageNum;
 
+    let total = await Article.find().then(response => response.length);
+
+    let reslut = await Article.find({}).sort({ createTime : -1 }).limit(pageNum).skip(skip).then(res=>{
+        return res.map((e,i)=>{
+            e.content = undefined
+            return e;
+        })
+    });
+    
+    ctx.body = JSON.parse(`{"status": "200","message":"ok","total":${total},"data":${JSON.stringify(reslut)}}`);
+});
 
 
 
@@ -158,7 +174,7 @@ router.get('/startarticle', async (ctx,next)=>{ // 倒序查询最近的10条文
     });
     
     ctx.body = JSON.parse(`{"status": "200","message":"ok","data":${JSON.stringify(reslut)}}`);
-})            
+});
 
 
 

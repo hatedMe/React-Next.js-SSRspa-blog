@@ -7,6 +7,7 @@ import Editor from '../views/Article/Editor'; //文章编辑
 import Index from '@/views/Index'
 import Navbar from '../components/Navbar';
 
+import ArticleList from '../views/Article/List'
 
 
 import store from '../store/index';
@@ -39,9 +40,9 @@ const router = new Router({
             requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
         children: [{
-            path: 'index',
-            component: Login,
-            name: '介绍 '
+            path: 'articleList',
+            component: ArticleList,
+            name: '文章列表'
         }, {
             path: 'editor',
             name: '文章编辑',

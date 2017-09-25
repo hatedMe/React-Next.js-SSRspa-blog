@@ -3,12 +3,15 @@
         <div class='menu-wrapper sidebar-container'>
             <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
                 <el-submenu index="1">
+
                     <template slot="title">
                         <i class="el-icon-menu"></i>
                         文章管理
                     </template>
-                    <el-menu-item index="1-1">发布文章</el-menu-item>
-                    <el-menu-item index="1-2">修改文章</el-menu-item>
+                    <router-link to="../articlemanagement/editor">
+                        <el-menu-item index="1-1">发布文章</el-menu-item>
+                    </router-link>
+                    <router-link to="../articlemanagement/articleList"><el-menu-item index="1-2">文章列表</el-menu-item></router-link>
                 </el-submenu>
                 <el-submenu index="2">
                     <template slot="title">
@@ -99,7 +102,7 @@ export default {
     transition: margin-left 0.28s ease-out;
     margin-left: 180px;
 }
-
+a{ text-decoration: none;}
 /* .el-submenu .el-menu {
     background-color: #1f2d3d;
 }
