@@ -34,7 +34,7 @@ export default {
 	},
 	methods: {
 		async onSubmit() {
-			let data = await this.axios.post('api/login', {
+			let data = await this.axios.post('../api/login', {
 				name: this.form.name,
 				password: this.form.password
 			}).then(res => {
