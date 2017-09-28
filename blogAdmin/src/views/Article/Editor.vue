@@ -167,8 +167,13 @@ export default {
 							message: '提交数据成功！',
 							type: 'success'
 						});
+						setTimeout(function() {
+							window.location.reload();
+						}, 800);
 					}
-				})
+				});
+				
+
 			}
 
 			

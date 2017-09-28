@@ -1,6 +1,6 @@
 import Link from 'next/link'
-
 import React from 'react';
+import moment from 'moment';
 
 export default class Article extends React.Component {
     constructor(props){
@@ -14,13 +14,8 @@ export default class Article extends React.Component {
 
     render() {
         let { title,articleId ,createTime ,category,summary} = this.props
-        
-        //createTime = new Date(createTime).toLocaleString()
-        // createTime = new Date(parseInt( createTime.valueOf())).toLocaleString().replace(/:\d{1,2}$/, '');
+        createTime = moment(createTime).format('YYYY-MM-DD HH:mm:ss');
 
-        //createTime = JSON.stringify(new Date( createTime.toLocaleString() )).replace(/T|"|\..*/g," ").trim()
-
-        console.log(createTime);
         const basepath = '../article?id='
         return (
             <article className="article article-type-post">

@@ -46,6 +46,9 @@
 </template>
 
 <script>
+
+import moment from 'moment'
+
   export default {
     data() {
         return {
@@ -70,7 +73,7 @@
             let data = await this.axios.get('/api/api/getAllArticle',{
                 params:{ pageNum ,pageSize}
             }).then(response=>{
-                let toDate = iNow => new Date(iNow).toLocaleString();
+                let toDate = iNow => moment(iNow).format('YYYY-MM-DD HH:mm:ss');
                 this.total = response.data.total;
                 return response.data.data.map((e,i)=> {
                     e.createTime = toDate(e.createTime)

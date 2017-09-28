@@ -240,4 +240,176 @@ var address = (function(){    // nav模块
 
 
 
+/******************** 22------代码重构 ********************** */
+
+var getUserInfo = function(){
+	ajax('url',function(data){
+		console.log( 'userId' + data.userId );
+		console.log( 'userName' + data.userName );
+		console.log( 'nickName' + data.nickName );
+	})
+}
+
+
+var getUserInfo = function(){
+	ajax('url',function(data){
+		printDetails(data);
+	})
+}
+
+var printDetails = function (data){
+	console.log( 'userId' + data.userId );
+	console.log( 'userName' + data.userName );
+	console.log( 'nickName' + data.nickName );
+}
+
+
+var paging = function(currPage){
+	if( currPage <= 0 ){
+		currPage = 0;
+		jump( currPage ); // 跳转
+	}else if (currPage >= totalPage){
+		currPage = totalPage;
+		jump( currPage);  // 跳转
+	}else{
+		jump( currPage);  // 跳转
+	}
+}
+
+
+var paging = function(currPage){
+	if( currPage <= 0 ){
+		currPage = 0;
+	}else if (currPage >= totalPage){
+		currPage = totalPage;
+	}
+	jump( currPage);  // 把jump函数独立出来
+}
+
+var getPrice =function(price){
+	var date = new Date();
+	if( date.getMonth() >= 6 &&  date.getMonth() <= 9) { // 夏季
+		return price * 0.8 
+	}
+	return price
+}
+
+
+if( date.getMonth() >= 6 &&  date.getMonth() <= 9) { 
+	// ...
+}
+
+var isSummer = function(){
+	var date = new Date();
+	return date.getMonth() >= 6 &&  date.getMonth() <= 9;
+}
+
+var getPrice =function(price){
+	if( isSummer() ){  //夏季
+		return price *0.8;
+	}
+	return price; 
+}
+
+
+
+
+
+var createXHR = function(){
+	var xhr;
+	try {
+		xhr = new ActiveXObject('MSML2.XMLHttp.6.0');
+	} catch (e) {
+		try {
+			xhr = new ActiveXObject('MSML2.XMLHttp.3.0')
+		} catch (e) {
+			xhr = new ActiveXObject('MSML2.XMLHttp')
+		}
+	}
+	return xhr;
+}
+
+var xhr = createXHR();
+
+var createXHR = function(){
+	var versions = ['MSML2.XMLHttp.6.0','MSML2.XMLHttp.3.0','MSML2.XMLHttp'];
+	for(var i=0;i<versions.length;i++){
+		try {
+			return new ActiveXObject(versions[i])
+		} catch (e) {
+			
+		}
+	}
+}
+
+var xhr = createXHR();
+
+var del = function(obj){
+	var ret;
+	if( !obj.isReadOnly ){      // 不为只读的才能被删除
+		if( obj.isFlader ){     // 如果是文件夹
+			ret = deleteFolder( obj );
+		}else if( obj.isFile ){  // 如果是文件
+			ret = deleteFile( obj );
+		}
+	}
+	return ret;
+}
+
+var del = function(obj){
+	if( obj.isReadOnly ){ // 反正if表达式
+		return ;
+	}
+	if( obj.isFlader ){
+		return deleteFolder( obj );
+	}
+	if( obj.isFile ){
+		return deleteFile( obj );
+	}
+}
+
+
+
+var setUserInfo = function(id,name,address,sex,mobile,qq){
+	console.log( 'id=' + id );
+	console.log( 'name=' + name );
+	console.log( 'address=' + address );
+	console.log( 'sex=' + sex );
+	console.log( 'mobile=' + mobile );
+	console.log( 'qq=' + qq );
+}
+
+setUserInfo( 1314 ,'sven' , 'shenzhen' ,'male' ,'137********' ,7548764 )
+
+
+var setUserInfo = function(obj){
+	console.log( 'id=' + obj.id );
+	console.log( 'name=' + obj.name );
+	console.log( 'address=' + obj.address );
+	console.log( 'sex=' + obj.sex );
+	console.log( 'mobile=' + obj.mobile );
+	console.log( 'qq=' + obj.qq );
+}
+
+setUserInfo({
+	id : 1314,
+	name : 'sven',
+	address : 'shenzhen',
+	mobile : '137*******',
+	qq : 7548764
+});
+
+
+var draw = function(width , height, squaer){};
+
+var draw = function(width , height){
+	var squaer = width * height;
+};
+
+
+
+
+
+
+
 

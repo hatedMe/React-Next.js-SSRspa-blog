@@ -43,7 +43,7 @@ router.post('/item', async(ctx, next) => {
 
 router.post('/savearticle', async(ctx, next) => { //存储文章
     let {alias,content,title,summary,labels,category, value} = ctx.request.body;
-    let iNow = JSON.stringify(new Date(Date.now())).replace(/T|"|\..*/g," ").trim();
+    let iNow = Date.now();    //临时解决时间相差8小时。 
     console.log(iNow);
     let articleId = Math.random().toString(36).substr(2, 8) + iNow.toString().substr(9, 32);
 
