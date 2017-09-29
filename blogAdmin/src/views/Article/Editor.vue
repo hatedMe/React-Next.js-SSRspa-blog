@@ -15,7 +15,12 @@
 				<el-input v-model="form.summary"></el-input>
 			</el-form-item>
 
-			
+			<el-form-item label="标签" prop="type" >
+				<div @keyup.13="keydownHander($event)"><el-input v-model="input" placeholder="请输入标签，回车确定" ></el-input></div>
+				<el-checkbox-group v-model="form.labels">
+					<el-checkbox v-for="(item,index) in cities" :label="item" key="index" name="type"></el-checkbox>
+				</el-checkbox-group>
+			</el-form-item>
 
 			<el-form-item label="文章内容">
 				<div style="height:600px;">
@@ -50,37 +55,35 @@ export default {
 	data() {
 		return {
 			labelPosition: 'top',
+			cities : [ ],  // 默认的选项
 			form: {
 				title: '',
 				summary: '',
 				category: '',
-				labels: ['react','jsx'],
+				labels: [],
 				content: '',
 				value: '',
 				id : ''
 			},
 			img_file: {},
 			option:[],
+			input: ''
 		}
 	},
 	async beforeMount () {
 		let id = this.$route.query.id;
 		if( id && this.$route.path.match(/[a-zA-Z-:/]+\/([a-zA-Z]+)\??/)[1] === 'revisearticle' ){
 			let reslut = await this.axios.post('/api/api/getrevisearticle',{id}).then(res => res.data );
-			console.log(reslut);
-			//console.log(JSON.parse( reslut.data.labels ));
+
+			reslut.data.labels.forEach((e,i)=> {
+				this.cities.push( e );
+			});
+
 			for( var attr in this.form){
-				//console.log(this.form[attr]);
-				//if( this.form[attr] === 'labels' ){
-					//this.form[attr] = JSON.parse( reslut.data[attr] )
-					//return;
-				//}
 				this.form[attr] = reslut.data[attr];
 			}
 			this.form.id = id ;
 			this.$store.commit('reviseArticle',true);
-		}else{
-			
 		}
 
 	},
@@ -95,6 +98,16 @@ export default {
 		},
 		$imgDel(pos) {
 			delete this.img_file[pos];
+		},
+		
+		keydownHander(ev){
+			if( this.input == '' ){
+				return ;
+			}
+			this.cities.push( this.input )
+			this.form.labels.push( this.input )
+			this.input = '';
+			console.log(this.form.labels);
 		},
 
 		async onSubmit() {
@@ -149,7 +162,7 @@ export default {
 			// content = markdown.toHTML(this.form.value );
 
 
-			this.form.labels = JSON.stringify(this.form.labels);
+			// this.form.labels = JSON.stringify(this.form.labels);
 
 			if( this.$store.state.isRevise ){
 				await this.axios.post('/api/api/revisearticle', this.form).then(res => {

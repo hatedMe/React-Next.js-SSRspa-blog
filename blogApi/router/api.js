@@ -147,10 +147,17 @@ router.post('/revisearticle',async (ctx,next)=>{  // 修改文章
 
 router.get('/getAllArticle', async (ctx,next)=>{  // 倒序查询文章
     let { pageSize, pageNum } = ctx.request.query;
-    !pageNum ? pageNum = 10 : pageNum = Number(pageNum); //条数
-    !pageSize ? pageSize = 1 : pageSize = Number(pageSize); // 页数
-    let skip = (pageSize - 1) * pageNum;
+    
+    if( pageNum == undefined ){
+        pageNum = 0;
+        pageSize = 1;
+    }else{
+        !pageNum ? pageNum = 10 : pageNum = Number(pageNum); //条数
+        !pageSize ? pageSize = 1 : pageSize = Number(pageSize); // 页数
+    }
 
+    let skip = (pageSize - 1) * pageNum;
+    
     let total = await Article.find().then(response => response.length);
 
     let reslut = await Article.find({}).sort({ createTime : -1 }).limit(pageNum).skip(skip).then(res=>{
@@ -162,6 +169,7 @@ router.get('/getAllArticle', async (ctx,next)=>{  // 倒序查询文章
     
     ctx.body = JSON.parse(`{"status": "200","message":"ok","total":${total},"data":${JSON.stringify(reslut)}}`);
 });
+
 
 
 

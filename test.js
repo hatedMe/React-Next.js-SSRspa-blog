@@ -409,7 +409,120 @@ var draw = function(width , height){
 
 
 
+var global = typeof window !== "undefined" ? window : this;
 
 
+if( !aup || !bup ){
+	return a === doc ? -1 :
+		b === doc ? 1 :
+		aup ? -1 :
+		bup ? 1 :
+		sortInput ? 
+		( indexOf.call( sortInput, a ) - indexOf.call( sortInput,b ) ) :
+		0;
+}
+
+var User = function(){
+	this.id = null;
+	this.name = null;
+}
+
+User.prototype.setId = function(id){
+	this.id = id;
+	return this;
+};
+
+User.prototype.setName = function(name){
+	this.name = name;
+	return this;
+}
+console.log( new User().setId(1314).setName('sevn') );
+
+// 或者
+
+var User = {
+	id : null ,
+	name : null ,
+	setId : function(id){
+		this.id = id;
+		return this;
+	},
+	setName: function(name){
+		this.name = name;
+		return this;
+	}
+}
+
+console.log(  User.setId(1314).setName('sevn') );
 
 
+var user = new User();
+user.setId( 1314 );
+user.setName( 'sevn' );
+
+
+var func = function(){
+	var flag = false;
+	for( var i=0;i<10;i++ ){
+		for(var j=0;j<10;j++){
+			if(i*j >30){
+				flag = true;
+				break;
+			}
+		}
+		if( flag === true ){
+			break;
+		}
+	}
+}
+
+
+var func = function(){
+	outerloop:
+	for(var i=0;i<10;i++){
+		innerloop:
+		for(var j=0;j<10;j++ ){
+			if( i*j >30 ){
+				break outerloop;
+			}
+		}
+	}
+}
+
+var func = function(){
+	for( var i=0;i<10;i++ ){
+		for(var j=0;j<10;j++){
+			if(i*j >30){
+				return;
+			}
+		}
+	}
+}
+
+var func = function(){
+	for( var i=0;i<10;i++ ){
+		for(var j=0;j<10;j++){
+			if(i*j >30){
+				return;
+			}
+		}
+	}
+	console.log( i );  //  这句代码不会被执行
+}
+
+
+var print = function(i){
+	console.log(i);
+}
+
+var func = function(){
+	for( var i=0;i<10;i++ ){
+		for(var j=0;j<10;j++){
+			if(i*j >30){
+				return print( i );
+			}
+		}
+	}
+}
+
+func();
