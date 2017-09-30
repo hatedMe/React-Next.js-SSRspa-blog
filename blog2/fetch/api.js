@@ -20,7 +20,7 @@ const getAllarticle = (pageName, pageSize) =>{
     fetch( prefixApi ).then(response=>{
         response.json()
     }).then(response=>{
-        return response
+        return responses
     }).catch(error=>{
         throw new Error( error );
     })
