@@ -2,12 +2,15 @@
 
 
 
-import 'isomorphic-fetch';
+
+import fetch from 'isomorphic-fetch';
 
 
 
 
 
-// export default fetch;
+
+
+export default fetch;
 
 
