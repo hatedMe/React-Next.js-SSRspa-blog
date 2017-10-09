@@ -28,6 +28,7 @@ const Head = (props) => (
     <meta property="og:image:height" content="630" />
     <link rel="stylesheet" href="/static/css/style.min.css" />
     <link rel="stylesheet" href="/static/css/atom-one-light.css" />
+    <script src="https://hm.baidu.com/hm.js?950e8d7c515bcd8b980309e7dc079efd"></script>
   </NextHead>
 )
 

@@ -1,7 +1,8 @@
-import Link from 'next/link'
-import Com from '../components/com'
+import Link from 'next/link';
+import Com from '../components/com';
 import Article from '../components/article';
-import moment from 'moment'
+import 'isomorphic-fetch';
+import moment from 'moment';
 
 
 export default class Archives extends React.Component {

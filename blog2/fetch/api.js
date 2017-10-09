@@ -17,7 +17,7 @@ const prefixApi = {
 
 
 const getAllarticle = (pageName, pageSize) =>{
-    fetch( prefixApi ).then(response=>{
+    fetch( prefixApi.getAllarticle ).then(response=>{
         response.json()
     }).then(response=>{
         return responses

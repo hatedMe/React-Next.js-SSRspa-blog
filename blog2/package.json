@@ -2,9 +2,9 @@
   "name": "custom-server-koa",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "set NODE_ENV=production && node server.js",
     "build": "next build",
-    "start": "set NODE_ENV=production && node server.js"
+    "start": "npm run build && node server.js"
   },
   "dependencies": {
     "koa": "^2.3.0",

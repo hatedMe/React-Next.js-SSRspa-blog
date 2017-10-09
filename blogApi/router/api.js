@@ -46,7 +46,7 @@ router.post('/savearticle', async(ctx, next) => { //存储文章
     let iNow = Date.now();    //临时解决时间相差8小时。 
     console.log(iNow);
     let articleId = Math.random().toString(36).substr(2, 8) + iNow.toString().substr(9, 32);
-
+    
 
     const saveId = new Promise((resolve, reject) => {
         resolve( new Articlemd({ articleId , value }).save()) 
@@ -62,7 +62,7 @@ router.post('/savearticle', async(ctx, next) => { //存储文章
             modifyTime : iNow,
             title,
             summary,
-            labels: JSON.parse(labels)
+            labels: Array.isArray( labels ) ? labels : JSON.parse(labels)
         });
         resolve(article.save());
     })

@@ -60,7 +60,7 @@ export default class Nav extends React.Component {
                     </div>
                     <nav id="main-navbar" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav main-nav">
-                            <li className="menu-item menu-item-home active">
+                            <li className="menu-item menu-item-home ">
                                 <a href="/">
                                     <i className="iconfont icon-zhuye1"></i>
                                     <span className="menu-title">首页</span>
