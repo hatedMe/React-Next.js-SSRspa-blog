@@ -3,6 +3,10 @@ import axios from 'axios';
 import store from '../store/index';
 import router from '../router/index';
 
+
+axios.defaults.timeout = 5000;
+axios.defaults.baseURL = 'http://api.djui.cn';
+
 axios.interceptors.request.use(
     config => {
         if (store.state.token && config.method === 'post') {

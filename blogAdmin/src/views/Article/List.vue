@@ -64,13 +64,13 @@ import moment from 'moment'
     },
     async mounted () {
         this.getList();
-        console.log(this);
+        //console.log(this);
     },
     methods: {
         async getList () {
             let pageSize = this.listQuery.currPage;
             let pageNum = this.listQuery.pageSize;
-            let data = await this.axios.get('/api/api/getAllArticle',{
+            let data = await this.axios.get('/api/getAllArticle',{
                 params:{ pageNum ,pageSize}
             }).then(response=>{
                 let toDate = iNow => moment(iNow).format('YYYY-MM-DD HH:mm:ss');

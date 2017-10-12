@@ -4,7 +4,7 @@ import Router from 'vue-router'
 
 import Login from '@/views/Login' //登录
 import Editor from '../views/Article/Editor'; //文章编辑
-import Index from '@/views/Index'
+import Index from '../views/Index'
 import Navbar from '../components/Navbar';
 
 import ArticleList from '../views/Article/List'

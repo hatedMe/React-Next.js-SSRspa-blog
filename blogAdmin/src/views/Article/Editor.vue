@@ -73,7 +73,7 @@ export default {
 	async beforeMount () {
 		let id = this.$route.query.id;
 		if( id && this.$route.path.match(/[a-zA-Z-:/]+\/([a-zA-Z]+)\??/)[1] === 'revisearticle' ){
-			let reslut = await this.axios.post('/api/api/getrevisearticle',{id}).then(res => res.data );
+			let reslut = await this.axios.post('/api/getrevisearticle',{id}).then(res => res.data );
 
 			reslut.data.labels.forEach((e,i)=> {
 				this.cities.push( e );
@@ -88,7 +88,7 @@ export default {
 
 	},
 	async mounted () {
-		this.axios.get('/api/api/allcategory').then(res => {
+		this.axios.get('/api/allcategory').then(res => {
 			this.option = res.data.data
 		});
 	},
@@ -130,7 +130,7 @@ export default {
 				//formdata.append('access_token', this.$store.state.token )
 				let lesult = await this.axios({
 					method: 'post',
-					url: 'http://api.djui.cn/api/addUserInfo',
+					url: '/api/addUserInfo',
 					data: formdata
 				});
 
@@ -165,7 +165,7 @@ export default {
 			// this.form.labels = JSON.stringify(this.form.labels);
 
 			if( this.$store.state.isRevise ){
-				await this.axios.post('/api/api/revisearticle', this.form).then(res => {
+				await this.axios.post('/api/revisearticle', this.form).then(res => {
 					if (res.data.status == 200) {
 						this.$message({
 							message: '提交数据成功！',
@@ -174,7 +174,7 @@ export default {
 					}
 				})
 			}else{
-				await this.axios.post('/api/api/savearticle', this.form).then(res => {
+				await this.axios.post('/api/savearticle', this.form).then(res => {
 					if (res.data.status == 200) {
 						this.$message({
 							message: '提交数据成功！',
