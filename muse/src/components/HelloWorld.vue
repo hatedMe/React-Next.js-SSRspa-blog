@@ -1,37 +1,31 @@
 <template>
     <div class="hello">
-        <mu-raised-button @click="openBottomSheet" label="Open Bottom Sheet" />
-        <mu-bottom-sheet :open="bottomSheet" @close="closeBottomSheet">
-            <mu-list @itemClick="closeBottomSheet">
-            <mu-sub-header>
-                请选择一个
-            </mu-sub-header>
-            <mu-list-item title="阴阳师"/>
-            <mu-list-item title="贪吃蛇大作战"/>
-            <mu-list-item title="一划到底"/>
-            <mu-list-item title="全民斗地主"/>
-            </mu-list>
-        </mu-bottom-sheet>
+        <Button @click="success">显示成功提示</Button>
+        <Button @click="warning">显示警告提示</Button>
+        <Button @click="error">显示错误提示</Button>
     </div>
 </template>
 
 <script>
-export default {
-    name: 'HelloWorld',
-    data () {
-        return {
-            bottomSheet: false
-        }
-    },
-    methods: {
-        closeBottomSheet () {
-            this.bottomSheet = false
+    export default {
+        name: 'HelloWorld',
+        data() {
+            return {
+                bottomSheet: false
+            }
         },
-        openBottomSheet () {
-            this.bottomSheet = true
+        methods: {
+            success() {
+                this.$Message.success('这是一条成功的提示');
+            },
+            warning() {
+                this.$Message.warning('这是一条警告的提示');
+            },
+            error() {
+                this.$Message.error('对方不想说话，并且向你抛出了一个异常');
+            }
         }
     }
-}
 </script>
 
 <style lang="less">
