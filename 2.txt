@@ -1,0 +1,26 @@
+[SwitchyOmega Conditions]
+@with result
+
+*.tumblr.com +ChromeGAE
+*.googlevideo.com +ChromeGAE
+*.ytimg.com +ChromeGAE
+*.twitter.com +ChromeGAE
+*.google.com.* +ChromeGAE
+*.google.com +ChromeGAE
+*.google-analytics.com +ChromeGAE
+*.googleapis.com +ChromeGAE
+*.googlecode.com +ChromeGAE
+*.googleusercontent.com +ChromeGAE
+*.gstatic.com +ChromeGAE
+goo.gl +ChromeGAE
+*.sf.net +ChromeGAE
+t.co +ChromeGAE
+*.tweetdeck.com +ChromeGAE
+*.twimg.com +ChromeGAE
+*.wikipedia.org +ChromeGAE
+
+* +direct
+
+
+
+https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
