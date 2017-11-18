@@ -1,7 +1,7 @@
 import NextHead from 'next/head'
 import { string } from 'prop-types'
 
-const defaultDescription = ''
+const defaultDescription = '蒋敏前端博客'
 const defaultOGURL = ''
 const defaultOGImage = ''
 
@@ -12,7 +12,7 @@ const Head = (props) => (
     <meta name="description" content={props.description || defaultDescription} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="蒋敏" />
-    <meta name="keywords" contect="蒋敏,前端,博客" />
+    <meta name="keywords" content="蒋敏,前端,博客" />
     <link rel="icon" sizes="192x192" href="/static/touch-icon.png" />
     <link rel="apple-touch-icon" href="/static/touch-icon.png" />
     <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
