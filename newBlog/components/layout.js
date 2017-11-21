@@ -7,6 +7,9 @@ import Nav from '../components/nav';
 import ContentFooter from '../components/contentFooter';
 
 
+import { initializeStore }  from '../store/index';
+import { Provider ,connect } from 'react-redux'
+import withRedux from 'next-redux-wrapper'
 
 class Layout extends React.Component {
     render() {
@@ -19,8 +22,10 @@ class Layout extends React.Component {
                 </section>
                 <ContentFooter/>
             </div>
+            
         )
     }
 }
+
 
 export default Layout;
