@@ -14,8 +14,7 @@ class About extends React.Component {
         super(props)
     }
     static async getInitialProps({query, pathname}) {
-        //let res = await axios.get(`/api/startarticle`);
-        console.log( query, pathname );
+        
         return { id: query.id }
     }
     add_todo(){
@@ -34,7 +33,6 @@ class About extends React.Component {
                     <button onClick={ this.add_todo.bind(this)}>增加</button>
                     <button onClick={ this.inc_todo.bind(this)}>减少</button>
                     {
-                        console.log( this.props )
                         
                         /*this.props.data.data.map((e, i) => {
                             return <Article key={i} {...e}/>
@@ -46,7 +44,7 @@ class About extends React.Component {
     }
 }
 
-export default withRedux(initializeStore)(About);
+export default Layout(About);
 
 
 

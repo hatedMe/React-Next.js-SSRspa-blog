@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { initializeStore }  from '../store/index';
-import {bindActionCreators} from 'redux'
+import { initializeStore , increment ,decrement }  from '../store/index';
+import { initStore }  from '../store/index2';
+import { fetchPosts } from '../actions/index'
+import { bindActionCreators } from 'redux'
 import { connect , Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper'
 
@@ -11,10 +13,7 @@ import moment from 'moment';
 import Highlight from 'react-highlight'
 import Layout from '../components/layout'
 import Article from '../components/article'
-
-
-
-
+import { EINPROGRESS } from 'constants';
 
 
 
@@ -23,45 +22,50 @@ import Article from '../components/article'
 class Index extends React.Component {
     constructor(props){
         super(props)
+        this.state ={
+            data : []
+        }
     }
-    static async getInitialProps({query, pathname}) {
-        //let res = await axios.get(`/api/startarticle`);
-        console.log( query, pathname );
-        return { id: query.id }
-    }
-    add_todo(){
+    async componentWillMount(){
+        // let res = await axios.get(`/api/startarticle`);
+        // console.log('index',res);
+        // this.setState({
+        //     data : res.data.data
+        // })
+        // console.log( this.state);
         
-        const { dispatch } = this.props;
-        dispatch({ type : 'INCREMENT'});
-        //this.props.addTodo()
+
+        //this.props.dispatch(fetchPosts('hi'))
+        //const { dispatch } = this.props;
+        //const res =  dispatch( fetchPosts('hi') )
+        console.log( this.props );
+        
+
     }
-    inc_todo(){
-        const { dispatch } = this.props;
-        dispatch({ type : 'DECREMENT'});
-    }
+    
     render() {
         return (
-            <Layout>
-                <div className="content">
-                    <button onClick={ this.add_todo.bind(this)}>增加</button>
-                    <button onClick={ this.inc_todo.bind(this)}>减少</button>
-                    {
-                        console.log( this.props )
-                        
-                        /*this.props.data.data.map((e, i) => {
-                            return <Article key={i} {...e}/>
-                        })*/
-                    }
-                </div>
-            </Layout>
+            <div className="content">
+                {/*
+                    this.state.data.map((e, i) => {
+                        return <Article key={i} {...e}/>
+                    })*/
+                }
+            </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        "item" :state.item,
+        "receivedAt":state.receivedAt
+    }
+  }
 
 
-export default withRedux(initializeStore)(Index);
 
+export default (Layout(Index));
 
 
 

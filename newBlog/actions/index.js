@@ -6,13 +6,20 @@ export const SELECT_REDDIT = 'SELECT_REDDIT';
 export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';  // 无效
 
 
+// const stateTree ={
+// 	home : {
+// 		isFetching : true,
+// 		didInvalidate :false,
+// 		data: {
+// 			totle:25,
+// 			item : [1,2,3],  // 10
+// 			limt : 10,
+// 			pagesize : 2,
+// 		},
+// 		lastUpdated : 1700000 // 时间戳
+// 	}
+// }
 
-export function selectReddit(reddit) {
-    return {
-        type: SELECT_REDDIT,
-        reddit,
-    };
-}
 
 export function invalidateReddit(reddit) {
     return {
@@ -33,16 +40,15 @@ function receivePosts(reddit, json) {
     return {
         type: RECEIVE_POSTS,
         reddit,
-        posts: json.data.data.map(child => child.data),
+        posts: json.data,
         receivedAt: Date.now(),
     };
 }
 
-function fetchPosts(reddit) {
+export function fetchPosts(reddit) {
     return dispatch => {
-        dispatch(requestPosts(reddit));
-        return axios.get('/api/').then(response => {
-            dispatch(receivePosts(reddit, response))
+        return axios.get('/api/startarticle').then(response => {
+            dispatch(receivePosts(reddit, response.data))
         })
     };
 }

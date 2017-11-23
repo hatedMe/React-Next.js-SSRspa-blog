@@ -10,28 +10,65 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from '../reducers/index';
 
 
+import axios from '../fetch/http';
 
 
-
-const reducer = (state = 0, action) => {
+const reducer = (state = {}, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
+    case 'RECEIVE_POSTS':
+      return Object.assign({},state,{
+          item: action.posts,
+          receivedAt :action.receivedAt,
+          reddit : action.reddit
+      })
     case 'DECREMENT':
-      return state - 1
+    return Object.assign({},state,{
+        isFetching: action.reddit,
+      })
     default:
       return state
   }
 };
 
+// export function increment(reddit) {
+//     return {
+//       type: "INCREMENT",
+//       reddit
+//     };
+// }
+  
+// export function decrement(reddit) {
+//     return {
+//       type: "DECREMENT",
+//       reddit
+//     };
+// }
+
+
+
+
+
+// const login = () => dispatch => {
+//     axios.get('/api/startarticle').then(response => {
+//         return dispatch({
+//             type: 'login',
+//             response
+//         })
+//     })
+// }
+
+
+// reducer
+// function loginReducer(state = {}, action) {
+//   var user = Object.assign(action.user, { isGuest: false })
+//   return Object.assign({}, state, { user })
+// }
+
+
+
+
+
 
 export const initializeStore = () => {
     return createStore( reducer, composeWithDevTools(applyMiddleware(thunkMiddleware, createLogger())) );
 };
-
-//, compose(applyMiddleware(thunkMiddleware, createLogger()),
-    
-    //window.devToolsExtension ? window.devToolsExtension() : f => f
- //)
-
-  //default initializeStore;
