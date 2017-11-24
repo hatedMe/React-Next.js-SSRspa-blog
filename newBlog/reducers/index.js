@@ -1,33 +1,36 @@
 
-import { REQUEST_POSTS ,RECEIVE_POSTS ,SELECT_REDDIT,INVALIDATE_REDDIT  } from '../actions/index'
+import { REQUEST_POSTS_BEFORE ,REQUEST_POSTS_LODING , REQUEST_POSTS_AFTER  } from '../actions/index2'
 
 
 
-export default function counter(state={
-    isFetch : false,
-    items: []
-} ,action){
+export default function counter(state = {},action){
     switch (action.type) {
-        case REQUEST_POSTS:
+        case REQUEST_POSTS_BEFORE:
             return {
                 ...state,
-                isFetch:true,
+                IndexPosts : {
+                    isFetch : false
+                }
             }
             break;
-        case RECEIVE_POSTS:
+        case REQUEST_POSTS_LODING:
             return {
                 ...state,
-                isFetch:2,
+                IndexPosts : {
+                    isFetch : 'login'
+                }
             }
             break;
-        case INVALIDATE_REDDIT:
+        case REQUEST_POSTS_AFTER:
             return {
                 ...state,
-                isFetch:3,
+                IndexPosts : {
+                    isFetch :true,
+                    ...action
+                }
             }
             break;
         default:
-        return state;
-            
+            return state;
     }
 }

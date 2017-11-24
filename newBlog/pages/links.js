@@ -1,36 +1,46 @@
 
 
 import React from 'react';
+import { bindActionCreators } from 'redux'
 import Layout from '../components/layout2'
 import Link from 'next/link';
+import withRedux from 'next-redux-wrapper'
+import { initStore, startClock, addCount, serverRenderClock } from '../store/index';
+import { connect } from 'react-redux';
 
-
-
-// const Books = props =>{
-//     console.log(props ,'books');
-//     return (
-//         <h1>
-//             <Link route='post'></Link>
-//         </h1>
-//     )
-// }
 
 class Links extends React.Component {
-    componentWillMount(){
-        console.log(this.props ,'links');
+    constructor(props){
+        super(props)
     }
-    add_todo(){
-        const { dispatch } = this.props;
-        dispatch({ type : 'INCREMENT'});
+    componentWillMount(){
+        console.log(this.props ,'books');
+    }
+    async add_todo(){
+        await this.props.fetchPostsIfNeeded();
+        console.log( this.props );
     }
     render() {
+       
         return (
+            
             <h1>
-                <button onClick={ this.add_todo.bind(this)}>增加</button>
-                <Link href='/books'><a>Links</a></Link>
+                <button onClick={ this.add_todo.bind(this)}>请求</button>
+                <Link href='/books'><a>books</a></Link>
+                <ul>
+                    { 
+                        
+                    }
+                </ul>
             </h1>
+            
         );
     }
 }
 
-export default Layout(Links)
+let setProps = {
+    id : 456
+}
+
+
+export default Layout(Links,setProps)
