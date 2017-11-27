@@ -46,10 +46,10 @@ class Index extends React.Component {
     render() {
         return (
             <div className="content">
-                {/*
+                {
                     this.state.data.map((e, i) => {
                         return <Article key={i} {...e}/>
-                    })*/
+                    })
                 }
             </div>
         )

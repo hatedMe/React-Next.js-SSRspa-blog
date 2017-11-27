@@ -4,40 +4,61 @@
 
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
-import Page from '../components/page';
-import AddCount from '../components/AddCount'
-
-
-import { initStore, startClock, addCount, serverRenderClock } from '../store/store3'
 import withRedux from 'next-redux-wrapper'
 
+import { initializeStore } from '../store/index';
+import * as ActionCreactres from '../actions/index2'
+import { fetchPosts } from '../actions/index'
+
+import Page from '../components/page';
+import AddCount from '../components/AddCount'
+import Item from '../components/article/item'
+
+
+
+
 class Tags extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            list : []
+        }
+    }
     static async getInitialProps ({store, isServer }) {
-        console.log( store.dispatch( startClock() ) );
-        return { isServer, id:456 }
+        return { isServer }
+    }
+    async componentWillMount(){
+        await this.props.fetchPostsIfNeeded();
+        let { posts } = this.props.IndexPosts;
+        this.setState({
+            list : posts
+        })
     }
     render() {
-        console.log( this.props );
         return (
             <Page>
-                456
+                <div className="content">
+                    <ul>
+                        {
+                            this.state.list.map((e,i) => {
+                                return <Item key={i} {...e} />
+                            })
+                        }
+                    </ul>
+                </div>
             </Page>
         );
     }
 }
 
-//     initializeStore,
-//     state => state,
-//     dispatch => bindActionCreators( ActionCreactres ,dispatch
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addCount: bindActionCreators(addCount, dispatch),
-        startClock: bindActionCreators(startClock, dispatch)
-    }
-}
-  
-export default withRedux(initStore, state => state, mapDispatchToProps)(Tags)
+
+
+export default withRedux(
+    initializeStore, 
+    state => state, 
+    dispatch => bindActionCreators( ActionCreactres ,dispatch )
+)(Tags)
 
 
 
