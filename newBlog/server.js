@@ -5,7 +5,7 @@ const Router = require('koa-router')
 const server = new Koa();
 
 const port = parseInt(process.env.PORT, 10) || 5000
-const dev = process.env.NODE_ENV !== 'development'
+const dev = process.env.NODE_ENV === 'development'
 
 const app = next({dev});
 

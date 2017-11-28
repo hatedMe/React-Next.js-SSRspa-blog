@@ -8690,3 +8690,46 @@ screen and (max-height:479px) {
 .markdown-body .hljs-strong {
     font-weight: 700
 }
+
+
+
+
+
+
+
+
+
+.article-foot {
+    display: flex;
+    display:-webkit-flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    margin:30px 0;
+    .recommend{
+        border: solid 1px #f54343;
+        border-radius: 2px;
+        padding: 6px 36px;
+        color: #f54343;
+        line-height: 16px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .share a{
+        display: inline-block;
+        width: 40px;
+        height: 30px;
+        color: transparent;
+        text-decoration: none;
+        margin-left: 12px;
+        text-align: center;
+        line-height: 30px;
+        background:url('/static/images/share.jpg') no-repeat;
+    }
+    .share a:nth-of-type(2){
+        background-position: 0 -32px;
+    }
+    .share a:nth-of-type(3){
+        background-position: 0 -66px;
+    }
+}

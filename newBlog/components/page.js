@@ -19,8 +19,9 @@ class Page extends Component {
                 <Nav />
                 <section className="main">
                     { this.props.children }
+                    <ContentFooter/>
                 </section>
-                <ContentFooter/>
+                
             </div>
         );
     }

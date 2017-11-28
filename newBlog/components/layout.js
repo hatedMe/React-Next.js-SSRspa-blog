@@ -25,8 +25,9 @@ export default (Page) => withRedux(initializeStore)(
                 <Nav />
                 <section className="main">
                     <Page {...this.props} />
+                    <ContentFooter />
                 </section>
-                <ContentFooter/>
+                
             </div>
             )
         }

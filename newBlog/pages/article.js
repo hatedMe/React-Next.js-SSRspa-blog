@@ -1,43 +1,66 @@
 import Link from 'next/link'
 import React from 'react';
-import Highlight from 'react-highlight'
+import ReactDOM from 'react-dom';
+import hljs from 'highlight.js';
+//import Highlight from '../node_modules/react-highlight/src/index'
 import fetch from '../fetch/http';
 import moment from 'moment';
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 
 import Page from '../components/page';
+import ArticleFoot from '../components/article/foot'
 
 import { initializeStore } from '../store/index';
-import * as ActionCreactres from '../actions/index2'
-import { fetchPosts } from '../actions/index'
+import * as ActionCreactres from '../actions/article'
 
 
 class Article extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            data : ''
+        }
+    }
     static async getInitialProps({query, pathname}) {
-        let rusllut = await fetch(`/api/article?id=${query.id}`);
-        let res = await rusllut.data
-        console.log(res);
-        return {id: query.id, data: res.data}
+        return { id: query.id }
+    }
+    componentDidUpdate(){
+        this.highlightCode();
+    }
+    async componentDidMount(){
+        //if( !this.props.id ) return;
+        await this.props.fetchPostsItem( this.props.id ); // 48intcrj8335
+
+        this.highlightCode();
+
+        this.setState({
+            data : this.props.articleReducers.item.filter( e => this.props.id == e.articleId)[0]
+        })
+        console.log(this.state.data);
+    }
+
+    highlightCode(){
+        const domNode = ReactDOM.findDOMNode(this);
+        const nodes = domNode.querySelectorAll('pre code');
+        for (let i = 0; i < nodes.length; i++) {
+            hljs.highlightBlock(nodes[i]);
+        }
+    }
+
+    add_todo(){
+        this.props.fetchPostsItem( '48intcrj8335' )
     }
 
     render() {
-        const {id, data} = this.props
-        let iNow = data.createTime
-        //iNow = new Date(iNow).toLocaleString();
-        iNow = moment(iNow).format('YYYY-MM-DD HH:mm:ss');
+        const { id, data } = typeof this.state.data
+        let iNow = moment(this.state.data.createTime).format('YYYY-MM-DD HH:mm:ss');
         return (
             <Page>
                 <div className="content">
-                    {/*<Highlight className='language-name-of-snippet markdown-body' innerHTML={true}>
-                        
-        </Highlight>*/}
-                    {
-                        <Highlight className='language-name-of-snippet markdown-body' innerHTML={true}>
-                        { data.content }
-        </Highlight>
-                        
-                    }
+                    {<div className="language-name-of-snippet markdown-body" dangerouslySetInnerHTML={{__html : this.state.data.content}}></div>}
+                    <button onClick={ this.add_todo.bind(this) }>按钮</button>
+                    <ArticleFoot />
                 </div>
             </Page>
         )

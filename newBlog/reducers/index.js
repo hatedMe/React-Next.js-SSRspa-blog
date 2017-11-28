@@ -3,31 +3,27 @@ import { REQUEST_POSTS_BEFORE ,REQUEST_POSTS_LODING , REQUEST_POSTS_AFTER  } fro
 
 
 
-export default function counter(state = {},action){
+export default function counter(state = {
+    posts:[]
+},action){
     switch (action.type) {
         case REQUEST_POSTS_BEFORE:
             return {
                 ...state,
-                IndexPosts : {
-                    isFetch : false
-                }
+                isFetch : false
             }
             break;
         case REQUEST_POSTS_LODING:
             return {
                 ...state,
-                IndexPosts : {
-                    isFetch : 'login'
-                }
+                isFetch : 'login'
             }
             break;
         case REQUEST_POSTS_AFTER:
             return {
                 ...state,
-                IndexPosts : {
-                    isFetch :true,
-                    ...action
-                }
+                isFetch :true,
+                ...action
             }
             break;
         default:

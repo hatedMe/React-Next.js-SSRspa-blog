@@ -29,7 +29,8 @@ class Tags extends Component {
     }
     async componentWillMount(){
         await this.props.fetchPostsIfNeeded();
-        let { posts } = this.props.IndexPosts;
+        console.log( this.props ,'.....');
+        let { posts } = this.props.reducers;
         this.setState({
             list : posts
         })
@@ -37,7 +38,7 @@ class Tags extends Component {
     render() {
         return (
             <Page>
-                <div className="content">
+                <div className="content article-list">
                     <ul>
                         {
                             this.state.list.map((e,i) => {

@@ -41,7 +41,7 @@ function fetchPostsAter(reddit,json){
         reddit,
         posts: json.data,
         receivedAt: Date.now(),
-      };
+    };
 }
 
 
@@ -58,8 +58,15 @@ function fetchPosts(reddit) {
 
 
 function isFetchPosts(state, reddit){
-    return typeof state.IndexPosts !== "undefined" ? false : true
+    // if( !!state.reducers.posts.length ){
+    //     return !state.reducers.posts.some( e =>{
+    //         return reddit == e.articleId
+    //     });
+    // }else{
+    //     return true
+    // }
 
+    return !state.reducers.posts.length;
 }
 
 
