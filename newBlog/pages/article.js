@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import hljs from 'highlight.js';
 //import Highlight from '../node_modules/react-highlight/src/index'
 import fetch from '../fetch/http';
-import moment from 'moment';
+import moment from '/static/js/moment.min';
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 

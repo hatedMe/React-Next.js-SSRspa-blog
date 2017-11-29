@@ -5,7 +5,7 @@
 
 import Link from 'next/link'
 import React from 'react';
-import moment from 'moment';
+import moment from '/static/js/moment.min';
 
 
 

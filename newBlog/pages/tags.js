@@ -11,7 +11,6 @@ import * as ActionCreactres from '../actions/index2'
 import { fetchPosts } from '../actions/index'
 
 import Page from '../components/page';
-import AddCount from '../components/AddCount'
 import Item from '../components/article/item'
 
 
