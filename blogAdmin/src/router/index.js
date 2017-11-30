@@ -7,6 +7,8 @@ import Editor from '../views/Article/Editor'; //文章编辑
 import Index from '../views/Index'
 import Navbar from '../components/Navbar';
 
+import Test from '../views/test'
+
 import ArticleList from '../views/Article/List'
 
 
@@ -52,6 +54,10 @@ const router = new Router({
             name: '文章修改',
             component: Editor
         }]
+    },{
+        path: '/test',
+        name: 'Test',
+        component: Test
     }]
 })
 

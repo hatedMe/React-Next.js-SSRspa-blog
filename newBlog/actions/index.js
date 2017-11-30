@@ -1,9 +1,10 @@
 import axios from '../fetch/http';
 
-export const REQUEST_POSTS = 'REQUEST_POSTS';  // 请求中
-export const RECEIVE_POSTS = 'RECEIVE_POSTS';  // 接受数据
-export const SELECT_REDDIT = 'SELECT_REDDIT';  
-export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';  // 无效
+
+export const REQUEST_POSTS_BEFORE = 'REQUEST_POSTS_BEFORE';  // 请求数据之前
+export const REQUEST_POSTS_LODING = 'REQUEST_POSTS_LODING';  // 请求数据之中
+export const REQUEST_POSTS_AFTER = 'REQUEST_POSTS_AFTER';  // 请求数据之后
+
 
 
 // const stateTree ={
@@ -20,40 +21,61 @@ export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';  // 无效
 // 	}
 // }
 
-
-export function invalidateReddit(reddit) {
+function fetchPostsBefore(reddit){
     return {
-        type: INVALIDATE_REDDIT,
+        type: REQUEST_POSTS_BEFORE,
         reddit,
-    };
+      };
 }
 
-function requestPosts(reddit) {
+function fetchPostsLoding(reddit){
     return {
-        type: REQUEST_POSTS,
+        type: REQUEST_POSTS_LODING,
         reddit,
-    };
+      };
 }
 
-
-function receivePosts(reddit, json) {
+function fetchPostsAter(reddit,json){
     return {
-        type: RECEIVE_POSTS,
+        type: REQUEST_POSTS_AFTER,
         reddit,
         posts: json.data,
         receivedAt: Date.now(),
     };
 }
 
-export function fetchPosts(reddit) {
+
+
+function fetchPosts(reddit) {
     return dispatch => {
+        dispatch( fetchPostsBefore(reddit ) );
+        dispatch( fetchPostsLoding(reddit) );
         return axios.get('/api/startarticle').then(response => {
-            dispatch(receivePosts(reddit, response.data))
+            dispatch(fetchPostsAter(reddit, response.data))
         })
     };
 }
 
 
+function isFetchPosts(state, reddit){
+    // if( !!state.reducers.posts.length ){
+    //     return !state.reducers.posts.some( e =>{
+    //         return reddit == e.articleId
+    //     });
+    // }else{
+    //     return true
+    // }
+
+    return !state.reducers.posts.length;
+}
 
 
+export function fetchPostsIfNeeded(reddit) {
+    return (dispatch, getState) => {
+      if (isFetchPosts( getState(), reddit) ) {
+        return dispatch(fetchPosts(reddit));
+      }
+      return null;
+    };
+}
 

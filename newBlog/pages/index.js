@@ -2,30 +2,45 @@ import React from 'react';
 import Link from 'next/link';
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
+import moment from '../lib/moment.min';
+
+import Loyout from '../components/layout';
+import Item from '../components/article/item'
 
 import { initializeStore } from '../store/index';
-import * as ActionCreactres from '../actions/index2'
-
-import moment from '/static/js/moment.min';
-import Page from '../components/page';
+import * as ActionCreactres from '../actions/index'
 
 
 
 class Index extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            list : []
+        }
     }
     async componentWillMount(){
-        
+        await this.props.fetchPostsIfNeeded();
+        console.log( this.props ,'.....');
+        let { posts } = this.props.reducers;
+        this.setState({
+            list : posts
+        })
     }
     
     render() {
         return (
-            <Page>
-                <div className="content">
-                    456
+            <Loyout>
+                <div className="content article-list">
+                    <ul>
+                        {
+                            this.state.list.map((e,i) => {
+                                return <Item key={i} {...e} />
+                            })
+                        }
+                    </ul>
                 </div>
-            </Page>
+            </Loyout>
         )
     }
 }

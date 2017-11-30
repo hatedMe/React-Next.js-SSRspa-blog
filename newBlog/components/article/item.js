@@ -5,8 +5,8 @@
 
 import Link from 'next/link'
 import React from 'react';
-import moment from '/static/js/moment.min';
-
+// import moment from '/static/js/moment.min';
+import moment from 'moment';
 
 
 export default (state) => {
