@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import moment from '../lib/moment.min';
 
-import Loyout from '../components/layout';
+import Loyout from '../components/page';
 import Item from '../components/article/item'
 
 import { initializeStore } from '../store/index';

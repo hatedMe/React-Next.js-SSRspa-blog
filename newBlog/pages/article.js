@@ -107,12 +107,12 @@ class Article extends React.Component {
                     <div className="content">
                         <ItemHead {...this.state.data } />
                         {<div className="language-name-of-snippet markdown-body" dangerouslySetInnerHTML={{__html : this.state.data.content}}></div>}
-                        
                         <ArticleFoot />
                     </div>
                     <ContentFooter/>
                 </section>
-                <AsideIndex {...this.state.title} />
+                
+                <AsideIndex title={ this.state.title } />
 
                 
             </Loyout>

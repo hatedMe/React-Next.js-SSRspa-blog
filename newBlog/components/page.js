@@ -8,6 +8,7 @@ import Head from './head';
 import Nav from '../components/nav';
 import ContentFooter from '../components/contentFooter';
 
+import AsideIndex from '../components/aside/index'
 
 
 
@@ -21,7 +22,7 @@ class Page extends Component {
                     { this.props.children }
                     <ContentFooter/>
                 </section>
-                
+                <AsideIndex />
             </div>
         );
     }
