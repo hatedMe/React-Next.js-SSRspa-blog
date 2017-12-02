@@ -5669,9 +5669,28 @@ pre code {
 .article-toc .toc {
     list-style: none;
     padding-left: 0;
-    line-height: 2
+    line-height: 2;
+    
 }
 
+.article-toc .toc .toc-item{
+    padding-left:10px;
+    position: relative;
+}
+.article-toc .toc .toc-item:before{
+    content: '';
+    position: absolute;
+    width:4px;
+    height:4px;
+    background-color:#000;
+    left:0;
+    top:14px;
+    display:block;
+}
+.article-toc .toc .toc-item:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
 .article-toc .toc ol {
     list-style: none;
     padding-left: 10px
@@ -7529,9 +7548,11 @@ pre code {
         width: 18px
     }
     .mainside .search {
+        visibility: hidden;
         width: 91.66667%;
         float: left
     }
+    
     .mainside .profile-block {
         padding: 0;
         margin: 10px 0;
@@ -7578,7 +7599,9 @@ pre code {
         padding-top: 50px
     }
 }
-
+.search{
+    visibility: hidden;
+}
 @media screen and (max-width:559px),
 screen and (max-height:479px) {
     .ins-search-container {

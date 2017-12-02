@@ -1,7 +1,13 @@
 <template>
     <div>
 
-        <p>{{message.test[0]['name']}}</p>
+        <p>
+            {{ 
+                message.test instanceof Array ? 
+                message.test[1]['name'][0]['_index'] :
+                '加载中。。。'
+            }}
+        </p>
 
     </div>
 </template>
@@ -12,8 +18,8 @@
 export default {
 	props: {
         message : {
-            type: null,
-            required : true
+            type: null, // null 所有内省都ok
+            required : true  //是否必须
         }
     }
 }

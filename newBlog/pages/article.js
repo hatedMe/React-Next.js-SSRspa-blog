@@ -77,14 +77,30 @@ class Article extends React.Component {
     setTitle (){
         const domNode = ReactDOM.findDOMNode(this);
         function selectHeaderDom( parent ){
-            return Array.from( domNode.querySelectorAll(`${parent} > *`) )
+            let mlarr = [];
+            let msarr = [];
+            let tmp = 0;
+            Array.from( domNode.querySelectorAll(`${parent} > *`) )
                 .filter( ele => /^h\d$/i.test( ele.nodeName.toLowerCase() ) )
-                .map( ele => {
-                    return {
-                        name : ele.nodeName.toLowerCase(),
-                        html : ele.innerHTML
+                .forEach( (ele,index,arr) => {
+                    if( ele.nodeName == arr[0].nodeName ){
+                        tmp++;
+                        msarr = [];
+                        mlarr.push({
+                            name : ele.nodeName.toLowerCase(),
+                            html : ele.innerHTML,
+                            offsetTop : ''
+                        })
+                    }else{
+                        msarr.push({
+                            name : ele.nodeName.toLowerCase(),
+                            html : ele.innerHTML,
+                            offsetTop : ''
+                        });
+                        Object.assign( mlarr[tmp-1] , {  childer :  msarr } );
                     }
                 })
+            return mlarr;
         }   
         
         let title = selectHeaderDom('.markdown-body')
