@@ -22,6 +22,7 @@ import * as ActionCreactres from '../actions/article'
 import ItemHead from '../components/article/head'
 
 
+
 class Article extends React.Component {
     constructor(props){
         super(props)
@@ -48,6 +49,9 @@ class Article extends React.Component {
         })
         console.log(this.state.data);
         this.setTitle();
+        window.addEventListener('resize',this.onSizeHander.bind(this),false);
+        
+        
     }
 
     highlightCode(){
@@ -56,23 +60,12 @@ class Article extends React.Component {
         for (let i = 0; i < nodes.length; i++) {
             hljs.highlightBlock(nodes[i]);
         }
-
-       
-
-
-        
-
-
-        ///console.log( selectHeaderDom('.markdown-body') ); 
-        //const arr = 
-        
-        // this.setState({
-        //     title : arr
-        // })
-        
-
     }
 
+
+    onSizeHander(){
+        this.state.title
+    }
 
     setTitle (){
         const domNode = ReactDOM.findDOMNode(this);
@@ -89,13 +82,13 @@ class Article extends React.Component {
                         mlarr.push({
                             name : ele.nodeName.toLowerCase(),
                             html : ele.innerHTML,
-                            offsetTop : ''
+                            offsetTop : getAbsPoint(ele).top
                         })
                     }else{
                         msarr.push({
                             name : ele.nodeName.toLowerCase(),
                             html : ele.innerHTML,
-                            offsetTop : ''
+                            offsetTop :getAbsPoint(ele).top
                         });
                         Object.assign( mlarr[tmp-1] , {  childer :  msarr } );
                     }
@@ -107,7 +100,19 @@ class Article extends React.Component {
         console.log( title );  
         this.setState({
             title : title
-        })
+        });
+
+
+        function getAbsPoint(e){
+            var left = e.offsetLeft;
+            var top = e.offsetTop;
+            while(e = e.offsetParent)
+            {
+                left += e.offsetLeft;
+                top += e.offsetTop;
+            }
+            return {left,top};
+        };
     }
 
 
@@ -116,7 +121,6 @@ class Article extends React.Component {
         let iNow = moment(this.state.data.createTime).format('YYYY-MM-DD HH:mm:ss');
         return (
             <Loyout>
-
                 <Head />
                 <Nav />
                 <section className="main">

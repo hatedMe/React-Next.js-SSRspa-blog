@@ -19,9 +19,7 @@ import moment from '../../lib/moment.min'
                 </h1>
                 <div className="article-meta">
                     <span className="article-date">
-                        <i className="fa fa-calendar-check-o">
-                        时间
-                        </i>
+                        <i className="iconfont icon-shijian"></i>
                         
                             <time>
                                 { iNow }
@@ -29,17 +27,13 @@ import moment from '../../lib/moment.min'
                         
                     </span>
                     <span className="article-tag">
-                        <i className="fa fa-tag">
-                        分类
-                        </i>
+                        <i className="iconfont icon-fenlei"></i>
                         <a className="article-tag-link" href="/tags/Hexo/">
                             { category }
                         </a>
                     </span>
                     <span className="article-read">
-                        <i className="fa fa-eye">
-                            阅读次数
-                        </i>
+                        <i className="iconfont icon-yuedu"></i>
                         <span id="busuanzi_container_page_pv">
                             <span id="busuanzi_value_page_pv">
                                 { viewCount }
@@ -47,9 +41,7 @@ import moment from '../../lib/moment.min'
                         </span>
                     </span>
                     <span className="article-read">
-                    <i className="fa fa-eye">
-                        标签
-                    </i>
+                    <i className="iconfont icon-biaoqiandao"></i>
                     <span id="busuanzi_container_page_pv">
                         {
                             typeof labels !== "undefined" ?
