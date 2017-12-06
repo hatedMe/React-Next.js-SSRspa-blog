@@ -3,7 +3,7 @@ var webpack = require('webpack')
 
 
 function resolve (dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '.', dir)
   }
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
     umdNamedDefine: true    // 是否将模块名称作为 AMD 输出的命名空间
   },
   externals: {
-    swiper: 'swiper'
+    swiper: 'swiper/dist/js/swiper'
   },
   module: {
     rules: [
@@ -39,7 +39,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: [resolve('/node_modules/'),resolve('node_modules/vue-bulma-tooltip')]
+        //exclude: [resolve('/node_modules/'),resolve('node_modules/vue-bulma-tooltip')]
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -52,12 +53,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
-    modules: [
-      resolve('src'),
-      resolve('node_modules')
-    ],
     alias: {
-      'swiper': path.join(__dirname,'./node_modules/swiper/dist/js/swiper.js' )
+      'swiper': 'swiper/dist/js/swiper.js'
     }
   },
   devtool: '#source-map'

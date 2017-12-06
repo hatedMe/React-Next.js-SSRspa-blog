@@ -18,8 +18,8 @@
 </template>
 
 <script>
-    import 'swiper/dist/css/swiper.min.css'
-    import { swiper , swiperSlide } from '../lib/index'
+    import '../node_modules/swiper/dist/css/swiper.min.css'
+    import { swiper , swiperSlide } from '../dist/vue-slidexswiper';
     export default {
         name: 'app',
         components: {
