@@ -20,7 +20,7 @@ t.co +ChromeGAE
 *.wikipedia.org +ChromeGAE
 
 * +direct
-
+啊撒大声地
 
 
 https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
