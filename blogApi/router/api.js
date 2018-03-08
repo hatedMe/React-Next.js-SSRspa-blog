@@ -200,8 +200,9 @@ router.post('/savecategory', async(ctx, next) => { //添加分类
     });
 });
 
-router.post('/addUserInfo', upload.array('image'), async(ctx, next) => {
+router.post('/addUserInfo', upload.array('image'), async(ctx, next) => { // 图片上传
     const arrayList = ctx.req.files;
+    console.log( arrayList );
     var usrreq = [];
     const saveImage = e => {
         let fileFormat = e.originalname.split(".");
