@@ -12,11 +12,11 @@ import Router from 'vue-router'
 
 
 const Login = r => require.ensure([], () => r(require('@/views/Login')) , 'Login');
-const Editor = r => require.ensure([], () => r(require('@/views/Article/Editor')), 'Editor')
-const Index = r => require.ensure([], () => r(require('@/views/Index')), 'Index')
-const Navbar = r => require.ensure([], () => r(require('@/components/Navbar')), 'Navbar')
-const Test = r => require.ensure([], () => r(require('@/views/test')), 'Test')
-const ArticleList = r => require.ensure([], () => r(require('@/views/Article/List')), 'ArticleList')
+const Editor = r => require.ensure([], () => r(require('@/views/Article/Editor')), 'Editor');
+const Index = r => require.ensure([], () => r(require('@/views/Index')), 'Index');
+const Navbar = r => require.ensure([], () => r(require('@/components/Navbar')), 'Navbar');
+const Test = r => require.ensure([], () => r(require('@/views/test')), 'Test');
+const ArticleList = r => require.ensure([], () => r(require('@/views/Article/List')), 'ArticleList');
 
 
 import store from '@/store/index';
