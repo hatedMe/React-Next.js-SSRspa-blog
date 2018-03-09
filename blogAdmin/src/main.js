@@ -7,14 +7,30 @@ import router from './router'
 Vue.config.productionTip = false
 
 
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css';
+import { Menu , Form , Option ,Table,
+    TableColumn,Pagination,FormItem,Input,Button,Submenu,MenuItem,Icon ,Select ,CheckboxGroup
+} from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 
 import axios from './fetch/axios';
 
 import store from './store/index';
 
-Vue.use(ElementUI);
+Vue.use(Menu);
+Vue.use(Form);
+Vue.use(Pagination);
+Vue.use(Option);
+Vue.use(Table);
+Vue.use(FormItem);
+Vue.use(Input);
+Vue.use(Button);
+Vue.use(Submenu);
+Vue.use( MenuItem );
+Vue.use(TableColumn);
+Vue.use(Icon);
+Vue.use(Select);
+Vue.use(CheckboxGroup);
+
 Vue.prototype.axios = axios;
 
 

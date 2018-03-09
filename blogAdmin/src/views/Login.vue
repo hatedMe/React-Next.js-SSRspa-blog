@@ -7,8 +7,9 @@
 			<el-form-item label="密码">
 				<el-input v-model="form.password" type="password"></el-input>
 			</el-form-item>
-			<el-button type="primary" size="small" @click="onSubmit">立即创建</el-button>
-			<!-- <p>{{ token }}</p> -->
+			<el-form-item>
+				<el-button type="primary" size="small" @click="onSubmit">立即创建</el-button>
+				<!-- <p>{{ token }}</p> -->
 			</el-form-item>
 		</el-form>
 	</div>

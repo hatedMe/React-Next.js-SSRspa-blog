@@ -7,7 +7,7 @@
 
 			<el-form-item label="所属分类">
 				<el-select v-model="form.category" placeholder="请选择所属分类">
-					<el-option v-for='(item,index) in option' :label="item.cateName" key="index" :value="item.cateName"></el-option>
+					<el-option v-for='(item,index) in option' :label="item.cateName" :key="index" :value="item.cateName"></el-option>
 				</el-select>
 			</el-form-item>
 
@@ -18,7 +18,7 @@
 			<el-form-item label="标签" prop="type" >
 				<div @keyup.13="keydownHander($event)"><el-input v-model="input" placeholder="请输入标签，回车确定" ></el-input></div>
 				<el-checkbox-group v-model="form.labels">
-					<el-checkbox v-for="(item,index) in cities" :label="item" key="index" name="type"></el-checkbox>
+					<el-checkbox v-for="(item,index) in cities" :label="item" :key="index" name="type"></el-checkbox>
 				</el-checkbox-group>
 			</el-form-item>
 
@@ -40,6 +40,7 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex';
+
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import marked from 'marked';

@@ -2,36 +2,36 @@
     <div>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column align="center" label='序号' width="70" >
-                <template scope="scope">{{ scope.$index+1 }}</template>
+                <template slot-scope="scope">{{ scope.$index+1 }}</template>
             </el-table-column>
             <el-table-column label="发布时间" >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-icon name="time"></el-icon>
                     <span style="margin-left: 10px">{{ scope.row.createTime }}</span>
                 </template>
             </el-table-column>
             <el-table-column label="文章标题" >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <p>{{ scope.row.title }}</p>
                 </template>
             </el-table-column>
             <el-table-column label="所属分类" width='120'>
-                <template scope="scope">
+                <template slot-scope="scope">
                     <p>{{ scope.row.category }}</p>
                 </template>
             </el-table-column>
             <el-table-column label="浏览次数" width='120' >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <p>{{ scope.row.viewCount }}</p>
                 </template>
             </el-table-column>
             <el-table-column label="最后修改时间" >
-                <template scope="scope">
+                <template slot-scope="scope">
                     <p>{{ scope.row.modifyTime }}</p>
                 </template>
             </el-table-column>
             <el-table-column label="操作">
-                <template scope="scope">
+                <template slot-scope="scope">
                     <el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
                     <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
                 </template>

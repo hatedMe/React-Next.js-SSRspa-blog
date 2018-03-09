@@ -2,17 +2,24 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 
-import Login from '@/views/Login' //登录
-import Editor from '../views/Article/Editor'; //文章编辑
-import Index from '../views/Index'
-import Navbar from '../components/Navbar';
-
-import Test from '../views/test'
-
-import ArticleList from '../views/Article/List'
+// import Login from '@/views/Login' //登录
+// import Editor from '@/views/Article/Editor'; //文章编辑
+// import Index from '@/views/Index'
+// import Navbar from '@/components/Navbar';
+// import Test from '@/views/test'
+// import ArticleList from '@/views/Article/List'
 
 
-import store from '../store/index';
+
+const Login = r => require.ensure([], () => r(require('@/views/Login')) , 'Login');
+const Editor = r => require.ensure([], () => r(require('@/views/Article/Editor')), 'Editor')
+const Index = r => require.ensure([], () => r(require('@/views/Index')), 'Index')
+const Navbar = r => require.ensure([], () => r(require('@/components/Navbar')), 'Navbar')
+const Test = r => require.ensure([], () => r(require('@/views/test')), 'Test')
+const ArticleList = r => require.ensure([], () => r(require('@/views/Article/List')), 'ArticleList')
+
+
+import store from '@/store/index';
 
 
 
