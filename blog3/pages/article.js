@@ -6,7 +6,9 @@ import ReactDOM from 'react-dom';
 import Header from '../compontents/Header.js';
 import Pagination from '../compontents/Pagination.js';
 import Footer from '../compontents/Footer.js';
+import ArticleFooter from '../compontents/articleFooter.js';
 import 'isomorphic-fetch';
+import moment from '../lib/moment.min';
 import hljs from 'highlight.js';
 
 
@@ -39,20 +41,26 @@ class Article extends React.Component {
     }
 
     render() {
-        let { content ,title } = this.props.data;
+        let { content ,title , createTime , category , labels } = this.props.data;
+        let iNow = moment(createTime).format('YYYY-MM-DD');
+        // console.log( this.props.data );
         return (
             <div className="page">
                 <Header />
                 <div id="content">
                     <div id="primary">
                         <article className="post">
-                            <h1>{ title }</h1>
+                            <header className="post-header">
+                                <h1 className="post-title">{ title }</h1>
+                                <time className="post-time">{ iNow }</time>
+                            </header>
+                            <div className="post-content">
+                                {
+                                    <div className="language-name-of-snippet markdown-body" dangerouslySetInnerHTML={{__html : content}}></div>
+                                }
+                            </div>
+                            <ArticleFooter labels={labels} />
                         </article>
-                        <div className="post-content">
-                            {
-                                <div className="language-name-of-snippet markdown-body" dangerouslySetInnerHTML={{__html : content}}></div>
-                            }
-                        </div>
                     </div>
                 </div>
                 <Footer />
