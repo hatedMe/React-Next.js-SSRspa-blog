@@ -10,7 +10,7 @@ module.exports =
 "use strict";
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/_react@16.2.0@react/cjs/react.development.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "D:\\wrok\\React-Next.js-SSRspa-blog\\blog3\\compontents\\Footer.js";
+var _jsxFileName = "D:\\work\\nodeblog\\blog3\\compontents\\Footer.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -120,8 +120,8 @@ var _default = Footer;
         return;
     }
 
-    reactHotLoader.register(Footer, "Footer", "D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/Footer.js");
-    reactHotLoader.register(_default, "default", "D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/Footer.js");
+    reactHotLoader.register(Footer, "Footer", "D:/work/nodeblog/blog3/compontents/Footer.js");
+    reactHotLoader.register(_default, "default", "D:/work/nodeblog/blog3/compontents/Footer.js");
     leaveModule(module);
 })();
 
@@ -138,7 +138,7 @@ var _default = Footer;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("./node_modules/_next@5.0.0@next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = 'D:\\wrok\\React-Next.js-SSRspa-blog\\blog3\\compontents\\Header.js';
+var _jsxFileName = 'D:\\work\\nodeblog\\blog3\\compontents\\Header.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -278,8 +278,8 @@ var _default = Header;
         return;
     }
 
-    reactHotLoader.register(Header, 'Header', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/Header.js');
-    reactHotLoader.register(_default, 'default', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/Header.js');
+    reactHotLoader.register(Header, 'Header', 'D:/work/nodeblog/blog3/compontents/Header.js');
+    reactHotLoader.register(_default, 'default', 'D:/work/nodeblog/blog3/compontents/Header.js');
     leaveModule(module);
 })();
 
@@ -296,7 +296,7 @@ var _default = Header;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("./node_modules/_next@5.0.0@next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = 'D:\\wrok\\React-Next.js-SSRspa-blog\\blog3\\compontents\\Pagination.js';
+var _jsxFileName = 'D:\\work\\nodeblog\\blog3\\compontents\\Pagination.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -421,8 +421,8 @@ var _default = Pagination;
         return;
     }
 
-    reactHotLoader.register(Pagination, 'Pagination', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/Pagination.js');
-    reactHotLoader.register(_default, 'default', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/Pagination.js');
+    reactHotLoader.register(Pagination, 'Pagination', 'D:/work/nodeblog/blog3/compontents/Pagination.js');
+    reactHotLoader.register(_default, 'default', 'D:/work/nodeblog/blog3/compontents/Pagination.js');
     leaveModule(module);
 })();
 
@@ -439,7 +439,7 @@ var _default = Pagination;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("./node_modules/_next@5.0.0@next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-var _jsxFileName = 'D:\\wrok\\React-Next.js-SSRspa-blog\\blog3\\compontents\\articleFooter.js';
+var _jsxFileName = 'D:\\work\\nodeblog\\blog3\\compontents\\articleFooter.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -559,8 +559,8 @@ var _default = ArticleFooter;
         return;
     }
 
-    reactHotLoader.register(ArticleFooter, 'ArticleFooter', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/articleFooter.js');
-    reactHotLoader.register(_default, 'default', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/compontents/articleFooter.js');
+    reactHotLoader.register(ArticleFooter, 'ArticleFooter', 'D:/work/nodeblog/blog3/compontents/articleFooter.js');
+    reactHotLoader.register(_default, 'default', 'D:/work/nodeblog/blog3/compontents/articleFooter.js');
     leaveModule(module);
 })();
 
@@ -47221,7 +47221,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_highlight_js__ = __webpack_require__("./node_modules/_highlight.js@9.12.0@highlight.js/lib/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_highlight_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_highlight_js__);
 
-var _jsxFileName = 'D:\\wrok\\React-Next.js-SSRspa-blog\\blog3\\pages\\article.js';
+var _jsxFileName = 'D:\\work\\nodeblog\\blog3\\pages\\article.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -47459,8 +47459,8 @@ var _default = Article;
         return;
     }
 
-    reactHotLoader.register(Article, 'Article', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/pages/article.js');
-    reactHotLoader.register(_default, 'default', 'D:/wrok/React-Next.js-SSRspa-blog/blog3/pages/article.js');
+    reactHotLoader.register(Article, 'Article', 'D:/work/nodeblog/blog3/pages/article.js');
+    reactHotLoader.register(_default, 'default', 'D:/work/nodeblog/blog3/pages/article.js');
     leaveModule(module);
 })();
 
