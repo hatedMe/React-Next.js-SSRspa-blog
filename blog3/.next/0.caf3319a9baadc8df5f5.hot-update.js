@@ -1,4 +1,4 @@
-webpackJsonp([4],{
+webpackHotUpdate(0,{
 
 /***/ "./styles/style.less":
 /***/ (function(module, exports, __webpack_require__) {
@@ -8,16 +8,15 @@ webpackJsonp([4],{
       var injectCss = function injectCss(prev, href) {
         var link = prev.cloneNode();
         link.href = href;
-        link.onload = link.onerror = function() {
+        link.onload = function() {
           prev.parentNode.removeChild(prev);
         };
         prev.stale = true;
-        prev.parentNode.insertBefore(link, prev.nextSibling);
+        prev.parentNode.insertBefore(link, prev);
       };
       module.hot.dispose(function() {
         window.__webpack_reload_css__ = true;
       });
-      module.hot.accept();
       if (window.__webpack_reload_css__) {
         module.hot.__webpack_reload_css__ = false;
         console.log("[HMR] Reloading stylesheets...");
@@ -26,7 +25,7 @@ webpackJsonp([4],{
           .querySelectorAll("link[href][rel=stylesheet]")
           .forEach(function(link) {
             if (!link.href.match(prefix) || link.stale) return;
-            injectCss(link, link.href.split("?")[0] + "?unix=1520657077744");
+            injectCss(link, link.href.split("?")[0] + "?unix=1523169865306");
           });
       }
     }
@@ -34,5 +33,5 @@ webpackJsonp([4],{
 
 /***/ })
 
-});
-//# sourceMappingURL=commons.js.map
+})
+//# sourceMappingURL=0.caf3319a9baadc8df5f5.hot-update.js.map

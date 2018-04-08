@@ -12,7 +12,7 @@ export const REQUEST_POSTS_AFTER = 'REQUEST_POSTS_AFTER';  // 请求数据之后
 // 		isFetching : true,
 // 		didInvalidate :false,
 // 		data: {
-// 			totle:25,
+// 			totle:26,
 // 			item : [1,2,3],  // 10
 // 			limt : 10,
 // 			pagesize : 2,

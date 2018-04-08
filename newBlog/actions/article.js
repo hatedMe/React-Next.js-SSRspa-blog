@@ -21,15 +21,6 @@ export const A_REQUEST_NEXT_POSTS = 'A_REQUEST_NEXT_POSTS';  // 请求数据之�
 // 	}
 // }
 
-// const tree =  {
-
-//     lastUpdated : 17000,
-//     list : [
-//         {
-
-//         }
-//     ]
-// }
 
 
 

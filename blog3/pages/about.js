@@ -4,6 +4,8 @@ import Pagination from '../compontents/Pagination.js';
 import Footer from '../compontents/Footer.js';
 
 
+import '../styles/style.less';
+
 class About extends React.Component {
     constructor(props) {
         super(props);
