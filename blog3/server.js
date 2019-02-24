@@ -3,10 +3,10 @@ const next = require('next')
 const Router = require('koa-router')
 
 const port = parseInt(process.env.PORT, 10) || 4000
-const dev = process.env.NODE_ENV !== 'production'
+const dev = (process.env.NODE_ENV === 'dev');
 const app = next({
     dev
-})
+});
 const handle = app.getRequestHandler()
 
 app.prepare()
