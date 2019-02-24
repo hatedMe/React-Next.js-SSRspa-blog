@@ -10,22 +10,10 @@ const Head = (props) => (
     <meta charset="UTF-8" />
     <title>{props.title || '蒋敏前端博客'}</title>
     <meta name="description" content={props.description || defaultDescription} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="author" content="蒋敏" />
     <meta name="keywords" content="蒋敏,前端,博客" />
-    <link rel="icon" sizes="192x192" href="/static/touch-icon.png" />
-    <link rel="apple-touch-icon" href="/static/touch-icon.png" />
-    <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
-    <link rel="icon" href="/static/favicon.ico" />
-    <meta property="og:url" content={props.url || defaultOGURL} />
-    <meta property="og:title" content={props.title || ''} />
-    <meta property="og:description" content={props.description || defaultDescription} />
-    <meta name="twitter:site" content={props.url || defaultOGURL} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={props.ogImage || defaultOGImage} />
-    <meta property="og:image" content={props.ogImage || defaultOGImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
     <link rel="stylesheet" href="/static/css/style.min.css" />
     <link rel="stylesheet" href="/static/css/atom-one-light.css" />
     <script src="https://hm.baidu.com/hm.js?950e8d7c515bcd8b980309e7dc079efd"></script>
