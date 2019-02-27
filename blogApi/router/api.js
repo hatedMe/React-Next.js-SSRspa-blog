@@ -157,17 +157,20 @@ router.get('/getAllArticle', async (ctx,next)=>{  // 倒序查询文章
     }
 
     let skip = (pageSize - 1) * pageNum;
-    
-    let total = await Article.find().then(response => response.length);
+    let total = 0;
+    let reslut = await Article.find({});
+    console.log( reslut.length );
 
-    let reslut = await Article.find({}).sort({ createTime : -1 }).limit(pageNum).skip(skip).then(res=>{
-        return res.map((e,i)=>{
-            e.content = undefined
-            return e;
-        })
-    });
+    ctx.body = {
+        status : 200 , 
+        message : 'ok',
+        data : {
+            lists : reslut ,
+            total : reslut.length
+        }
+    }
     
-    ctx.body = JSON.parse(`{"status": "200","message":"ok","total":${total},"data":${JSON.stringify(reslut)}}`);
+    // ctx.body = JSON.parse(`{"status": "200","message":"ok","total":${total},"data":${JSON.stringify(reslut)}}`);
 });
 
 

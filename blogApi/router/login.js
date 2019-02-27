@@ -14,6 +14,7 @@ const router = new Router();
 
 router.post('/', koaBody, async(ctx, next) => {
     let {name, password} = ctx.request.body;
+    
     let res = await User.findOne({name, password});
     if( res !== null ){
         let token = jwt.sign({ userInfo: `${name}` }, 'token',{ expiresIn: config.tokenExpiresIn });

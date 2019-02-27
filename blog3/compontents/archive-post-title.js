@@ -13,7 +13,7 @@ class PostTitle extends React.Component {
             <div className="archive-post">
                 <span className="archive-post-time">{ iNow }</span>
                 <span className="archive-post-title">
-                    <Link href={ `/article?id=${articleId}`}>
+                    <Link as={`/article/${articleId}`} href={ `/article?id=${articleId}`} >
                         <a className="archive-post-link">{ title }</a>
                     </Link>
                 </span>

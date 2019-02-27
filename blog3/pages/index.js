@@ -16,7 +16,7 @@ class App extends React.Component {
         super(props);
     }
     static async getInitialProps({query, pathname}) {
-        let rusllut = await fetch(`http://api.djui.cn/api/getAllArticle`);
+        let rusllut = await fetch(`http://localhost:4040/api/getAllArticle`);
         let res = await rusllut.json();
 
         return {

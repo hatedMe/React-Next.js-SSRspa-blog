@@ -10,7 +10,7 @@ const articleSchema = new mongoose.Schema({
     //来源
     source: { type: String },
     //内容
-    content: { type: String },
+    // content: { type: String },
     //分类Id
     category: { type: String , default: 'other' },
     //文章id
@@ -31,6 +31,6 @@ const articleSchema = new mongoose.Schema({
     modifyTime: { type: Date}
 },{ versionKey: false });
 
-let Article = mongoose.model('article', articleSchema);
+let Article = mongoose.model('article_info', articleSchema , 'article_info');
 
 module.exports = Article;

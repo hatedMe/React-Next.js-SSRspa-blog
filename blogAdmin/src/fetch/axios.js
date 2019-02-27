@@ -5,7 +5,8 @@ import router from '../router/index';
 
 
 axios.defaults.timeout = 5000;
-axios.defaults.baseURL = 'http://api.djui.cn';
+// axios.defaults.baseURL = 'http://api.djui.cn';
+axios.defaults.baseURL = 'http://localhost:4040';
 
 axios.interceptors.request.use(
     config => {

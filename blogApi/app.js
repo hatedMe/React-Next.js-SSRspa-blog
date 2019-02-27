@@ -14,10 +14,6 @@ const login = require('./router/login');
 
 const config = require('./conf/config');
 
-router.get('/', (ctx, next) => {
-    ctx.body = '45'
-})
-
 app.use( koaCors() );
 
 
@@ -40,7 +36,7 @@ mongoose.Promise = global.Promise;
 // });
 
 
-let db = mongoose.connect(`mongodb://atom:123456@${config.mongoHost}/${config.mongoDatabase}`,{useMongoClient: true});
+let db = mongoose.connect(`mongodb://root:root@${config.mongoHost}/${config.mongoDatabase}`,{useMongoClient: true});
 db.once('open',function(){
     console.info(`listening on port ${config.serverPort} && 数据库连接成功 =======> ok`);
     app.listen(config.serverPort);

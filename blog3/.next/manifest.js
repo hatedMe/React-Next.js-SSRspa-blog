@@ -90,7 +90,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f9b93bcf1787aad7fc78"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fc40338eb3b11e115d76"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -755,7 +755,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + ({"0":"main.js","1":"bundles\\pages\\_error.js"}[chunkId]||chunkId) + "-" + {"0":"db277e6170db48ee659d","1":"236aea7be108cbc5c53a"}[chunkId] + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + ({"0":"main.js","1":"bundles\\pages\\_error.js","3":"bundles\\pages\\article.js","4":"bundles\\pages\\index.js"}[chunkId]||chunkId) + "-" + {"0":"a45af1f4d7413b849f02","1":"236aea7be108cbc5c53a","3":"a397a7031446d8c2fa1b","4":"a393d26a9d64f2ba460d"}[chunkId] + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
