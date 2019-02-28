@@ -15,6 +15,11 @@ export default class MyDocument extends Document {
                     <link rel='stylesheet' href='/_next/static/style.css' />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+                    <meta httpEquiv="description" content="蒋敏web前端个人博客"/>
+                    <meta name="Keywords" content="蒋敏,个人网站,个人博客,  web前端" />
+                    <meta name="Description" content="蒋敏个人博客" />
+                    <meta name="author" content="蒋敏" />
+                    <title>蒋敏个人博客</title>
                 </Head>
                 <body>
                     <Main />

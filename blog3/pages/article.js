@@ -18,7 +18,7 @@ class Article extends React.Component {
     }    
     static async getInitialProps({query, pathname}) {
 
-        let rusllut = await fetch(`http://localhost:4040/api/article?id=${ query.id }`);
+        let rusllut = await fetch(`http://api.djui.cn/front/api/user/findid/${ query.id }`);
         let res = await rusllut.json();
 
         return { data: res.data }

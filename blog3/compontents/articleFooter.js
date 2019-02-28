@@ -13,7 +13,7 @@ class ArticleFooter extends React.Component {
                     {
                         this.props.labels.map( (e,i) =>{
                             return (
-                                <Link key={i}>
+                                <Link key={i} href={e}>
                                     { e }
                                 </Link>
                             )

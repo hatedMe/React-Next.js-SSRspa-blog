@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "dev": "npm start",
+    "start": "nodemon server.js",
+    "pm2" : "pm2 start pm2.json"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "jsonwebtoken": "^7.4.1",

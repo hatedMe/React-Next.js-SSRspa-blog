@@ -1,7 +1,7 @@
 const env = process.env
 
 module.exports = {
-    serverPort: env.serverPort || 4040,
+    serverPort: env.serverPort || 8600,
 
     mongoHost: env.mongoHost || '39.96.202.151',
     mongoDatabase: env.mongoDatabase || 'blog',

@@ -16,15 +16,14 @@ class App extends React.Component {
         super(props);
     }
     static async getInitialProps({query, pathname}) {
-        let rusllut = await fetch(`http://localhost:4040/api/getAllArticle`);
+        let rusllut = await fetch(`http://api.djui.cn/front/api/user/find?pageNum=20`);
         let res = await rusllut.json();
-
         return {
             data : res.data
         }
     }
     render() {
-        let { data } = this.props.data;
+        let { lists } = this.props.data;
         return (
             <div className="page">
                 <Header />
@@ -40,7 +39,7 @@ class App extends React.Component {
                                         <h2 className="archive-year">2017</h2>
                                     </div>
                                     {
-                                        this.props.data.map((e,i)=>{
+                                        lists.map((e,i)=>{
                                             console.log( e,i );
                                             return <PostTile key={i} {...e} />
                                         })
